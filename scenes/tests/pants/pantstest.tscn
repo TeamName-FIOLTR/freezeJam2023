@@ -1,0 +1,91 @@
+[gd_scene load_steps=16 format=3 uid="uid://cmlbohc828vqw"]
+
+[ext_resource type="PackedScene" uid="uid://bqxwm2g0w4vbb" path="res://assets/models/cryo_pants/pantshopefully.glb" id="1_ndluq"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5qhww"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iodro"]
+animation = &"Pants Run Forwards 4 m_s"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0d0km"]
+animation = &"Pants Walk Forwards 1 m_s"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_6hv7o"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_daplf"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ntmxr"]
+states/StateMachine/node = SubResource("AnimationNodeStateMachine_daplf")
+states/StateMachine/position = Vector2(518.667, 115.333)
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pml8j"]
+states/StateMachine/node = SubResource("AnimationNodeStateMachine_ntmxr")
+states/StateMachine/position = Vector2(517.333, 130)
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3i8ay"]
+states/StateMachine/node = SubResource("AnimationNodeStateMachine_pml8j")
+states/StateMachine/position = Vector2(506.667, 120.667)
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3mseu"]
+states/StateMachine/node = SubResource("AnimationNodeStateMachine_3i8ay")
+states/StateMachine/position = Vector2(413.667, 117.667)
+graph_offset = Vector2(-186, -27)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jog65"]
+animation = &"Pants Walk Forwards 1 m_s"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2x3i1"]
+animation = &"Pants Walk Forwards 1 m_s"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p1443"]
+animation = &"Pants RigAction1"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_xpv70"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_jog65")
+blend_point_0/pos = Vector2(-0.4, 0.3)
+blend_point_1/node = SubResource("AnimationNodeAnimation_2x3i1")
+blend_point_1/pos = Vector2(0.2, 0.4)
+blend_point_2/node = SubResource("AnimationNodeAnimation_p1443")
+blend_point_2/pos = Vector2(0, -0.6)
+x_label = "Mystery Dungeon"
+y_label = "diamond"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5hmf2"]
+graph_offset = Vector2(-394.341, 214.778)
+nodes/82_99_F_M/node = SubResource("AnimationNodeTimeScale_5qhww")
+nodes/82_99_F_M/position = Vector2(-20, 3.33333)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_0d0km")
+nodes/Animation/position = Vector2(-293.333, 80)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_iodro")
+"nodes/Animation 2/position" = Vector2(-293.333, 186.667)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_6hv7o")
+nodes/Blend2/position = Vector2(133.333, 133.333)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_3mseu")
+nodes/StateMachine/position = Vector2(-373.333, -53.3333)
+nodes/bootleg/node = SubResource("AnimationNodeBlendSpace2D_xpv70")
+nodes/bootleg/position = Vector2(53.3333, 320)
+nodes/output/position = Vector2(400, 266.667)
+node_connections = [&"output", 0, &"bootleg", &"Blend2", 0, &"82_99_F_M", &"Blend2", 1, &"Animation 2", &"82_99_F_M", 0, &"Animation"]
+
+[node name="pantstest" instance=ExtResource("1_ndluq")]
+
+[node name="Skeleton3D" parent="Pants Rig" index="0"]
+bones/1/position = Vector3(0, 0.961569, 0)
+bones/2/rotation = Quaternion(0.999118, -2.95456e-06, 3.60312e-05, 0.0419856)
+bones/3/rotation = Quaternion(0.0814012, 5.46424e-05, -5.67908e-05, 0.996681)
+bones/4/rotation = Quaternion(-0.533026, -0.000526539, 0.000186148, 0.846099)
+bones/5/rotation = Quaternion(0.982668, 0.000237288, -3.98193e-05, 0.185374)
+bones/6/rotation = Quaternion(0.369759, -7.8623e-05, 0.00047083, 0.929128)
+bones/7/rotation = Quaternion(-0.49253, 7.56953e-05, -2.31247e-05, 0.870296)
+bones/8/position = Vector3(0.124644, 0.112525, -0.00151353)
+bones/9/position = Vector3(0.124593, 0.565102, 0.373388)
+bones/10/position = Vector3(-0.124644, 0.218152, -0.0202414)
+bones/11/position = Vector3(-0.124593, 0.565102, 0.373388)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_5hmf2")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/82_99_F_M/scale = 1.0
+parameters/Blend2/blend_amount = 0.27
+parameters/bootleg/blend_position = Vector2(-0.0547264, -0.0414507)
