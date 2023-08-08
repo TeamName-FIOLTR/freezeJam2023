@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmlbohc828vqw"]
+[gd_scene load_steps=17 format=3 uid="uid://cmlbohc828vqw"]
 
 [ext_resource type="PackedScene" uid="uid://bqxwm2g0w4vbb" path="res://assets/models/cryo_pants/pantshopefully.glb" id="1_ndluq"]
+[ext_resource type="PackedScene" uid="uid://cunhjnrmtu07a" path="res://assets/animations/cryo_pants/pantsanimtweatsmaybe.glb" id="2_nx06f"]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5qhww"]
 
@@ -51,11 +52,11 @@ x_label = "Mystery Dungeon"
 y_label = "diamond"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5hmf2"]
-graph_offset = Vector2(-394.341, 214.778)
+graph_offset = Vector2(-504.038, -38.9848)
 nodes/82_99_F_M/node = SubResource("AnimationNodeTimeScale_5qhww")
 nodes/82_99_F_M/position = Vector2(-20, 3.33333)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_0d0km")
-nodes/Animation/position = Vector2(-293.333, 80)
+nodes/Animation/position = Vector2(-300, 80)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_iodro")
 "nodes/Animation 2/position" = Vector2(-293.333, 186.667)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_6hv7o")
@@ -65,27 +66,41 @@ nodes/StateMachine/position = Vector2(-373.333, -53.3333)
 nodes/bootleg/node = SubResource("AnimationNodeBlendSpace2D_xpv70")
 nodes/bootleg/position = Vector2(53.3333, 320)
 nodes/output/position = Vector2(400, 266.667)
-node_connections = [&"output", 0, &"bootleg", &"Blend2", 0, &"82_99_F_M", &"Blend2", 1, &"Animation 2", &"82_99_F_M", 0, &"Animation"]
+node_connections = [&"output", 0, &"Blend2", &"82_99_F_M", 0, &"Animation", &"Blend2", 0, &"82_99_F_M", &"Blend2", 1, &"Animation 2"]
 
 [node name="pantstest" instance=ExtResource("1_ndluq")]
 
-[node name="Skeleton3D" parent="Pants Rig" index="0"]
-bones/1/position = Vector3(0, 0.961569, 0)
-bones/2/rotation = Quaternion(0.999118, -2.95456e-06, 3.60312e-05, 0.0419856)
-bones/3/rotation = Quaternion(0.0814012, 5.46424e-05, -5.67908e-05, 0.996681)
-bones/4/rotation = Quaternion(-0.533026, -0.000526539, 0.000186148, 0.846099)
-bones/5/rotation = Quaternion(0.982668, 0.000237288, -3.98193e-05, 0.185374)
-bones/6/rotation = Quaternion(0.369759, -7.8623e-05, 0.00047083, 0.929128)
-bones/7/rotation = Quaternion(-0.49253, 7.56953e-05, -2.31247e-05, 0.870296)
-bones/8/position = Vector3(0.124644, 0.112525, -0.00151353)
-bones/9/position = Vector3(0.124593, 0.565102, 0.373388)
-bones/10/position = Vector3(-0.124644, 0.218152, -0.0202414)
-bones/11/position = Vector3(-0.124593, 0.565102, 0.373388)
+[node name="pantsanimtweatsmaybe" parent="." index="0" instance=ExtResource("2_nx06f")]
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+[node name="Skeleton3D" parent="pantsanimtweatsmaybe/Pants Rig" index="0"]
+bones/1/position = Vector3(0, 0.902039, 0)
+bones/1/rotation = Quaternion(-1.74429e-15, -0.0317454, 2.86197e-16, 0.999496)
+bones/2/rotation = Quaternion(0.969742, 0.0197428, -0.0307772, 0.241378)
+bones/3/rotation = Quaternion(0.148385, 5.06901e-05, -6.03436e-05, 0.98893)
+bones/4/rotation = Quaternion(-0.495995, -0.0175298, 0.00619303, 0.868126)
+bones/5/rotation = Quaternion(0.999121, -0.0195245, -0.0356538, 0.0102505)
+bones/6/rotation = Quaternion(0.391588, -5.2223e-05, 0.000480004, 0.92014)
+bones/7/rotation = Quaternion(-0.609816, 9.146e-05, 2.75579e-06, 0.792543)
+bones/8/position = Vector3(0.124644, 0.165364, 0.280392)
+bones/9/position = Vector3(0.124593, 0.565102, 0.401652)
+bones/10/position = Vector3(-0.124644, 0.246957, -0.327882)
+bones/11/position = Vector3(-0.124593, 0.565102, 0.401652)
+
+[node name="Skeleton3D" parent="Pants Rig" index="0"]
+bones/1/rotation = Quaternion(-2.49612e-15, 0.0372334, -2.0046e-16, 0.999307)
+bones/2/rotation = Quaternion(0.999846, -1.37945e-06, 4.67823e-05, 0.0175403)
+bones/3/rotation = Quaternion(0.0446611, 5.66957e-05, -5.47411e-05, 0.999002)
+bones/4/rotation = Quaternion(-0.53465, -7.63901e-05, 1.93785e-05, 0.845074)
+bones/5/rotation = Quaternion(-0.999565, 2.9261e-05, 4.39948e-05, 0.0294915)
+bones/6/rotation = Quaternion(-0.0447001, -9.9662e-05, 7.60243e-06, 0.999)
+bones/7/rotation = Quaternion(-0.53465, 7.63901e-05, -1.93785e-05, 0.845074)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3"]
 tree_root = SubResource("AnimationNodeBlendTree_5hmf2")
-anim_player = NodePath("../AnimationPlayer")
+anim_player = NodePath("../pantsanimtweatsmaybe/AnimationPlayer")
 active = true
 parameters/82_99_F_M/scale = 1.0
 parameters/Blend2/blend_amount = 0.27
 parameters/bootleg/blend_position = Vector2(-0.0547264, -0.0414507)
+
+[editable path="pantsanimtweatsmaybe"]

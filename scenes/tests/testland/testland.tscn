@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://yluhsphjat7q"]
+
+[ext_resource type="PackedScene" uid="uid://g1twwryefig0" path="res://scenes/tests/pants2notcorrupt/pants2.tscn" id="1_q616i"]
+[ext_resource type="Texture2D" uid="uid://btowscyibhwuk" path="res://assets/textures/debug_texture.png" id="2_gj22v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4x50m"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_l76n2"]
+sky_material = SubResource("ProceduralSkyMaterial_4x50m")
+
+[sub_resource type="Environment" id="Environment_b8bj8"]
+background_mode = 2
+sky = SubResource("Sky_l76n2")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_fo8ny"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3jrw"]
+albedo_texture = ExtResource("2_gj22v")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7i7l1"]
+size = Vector2(30, 30)
+
+[node name="testland" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b8bj8")
+
+[node name="pants2" parent="." instance=ExtResource("1_q616i")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_fo8ny")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_h3jrw")
+mesh = SubResource("PlaneMesh_7i7l1")
