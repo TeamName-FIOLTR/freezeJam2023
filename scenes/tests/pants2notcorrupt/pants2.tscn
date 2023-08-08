@@ -35,7 +35,7 @@ animation = &"pantsanimtweatsmaybe/Pants Walk Forwards 1 m_s"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5euu1"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bbd2b"]
-graph_offset = Vector2(-541.611, 225.776)
+graph_offset = Vector2(-458.906, 153.47)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_tonnx")
 nodes/Animation/position = Vector2(-680, 140)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_2yrab")
@@ -63,16 +63,16 @@ pants = NodePath("pantshopefully")
 [node name="pantshopefully" parent="." instance=ExtResource("1_lgevu")]
 
 [node name="Skeleton3D" parent="pantshopefully/Pants Rig" index="0"]
-bones/1/position = Vector3(0, 0.970709, 0)
-bones/1/rotation = Quaternion(-3.03149e-15, -0.0356482, 2.34909e-16, 0.999364)
-bones/2/rotation = Quaternion(0.994895, 0.0116246, -0.0349076, 0.093967)
-bones/3/rotation = Quaternion(0.230065, 4.54981e-05, -6.43517e-05, 0.973175)
-bones/4/rotation = Quaternion(-0.470658, -7.72098e-05, 2.60354e-05, 0.882316)
-bones/5/rotation = Quaternion(0.998297, -0.00306458, -0.035018, -0.0465502)
-bones/6/rotation = Quaternion(0.030583, -8.53827e-05, 8.39382e-05, 0.999532)
-bones/7/rotation = Quaternion(-0.588404, 0.00012846, 1.42877e-06, 0.808567)
-bones/8/position = Vector3(0.124644, 0.179005, -0.0289674)
-bones/10/position = Vector3(-0.124644, 0.144782, -0.109305)
+bones/1/position = Vector3(0, 0.935936, 0)
+bones/1/rotation = Quaternion(-3.00324e-09, 0.154903, -1.32142e-08, 0.98793)
+bones/2/rotation = Quaternion(0.987786, 0.010561, 0.154961, -0.0123968)
+bones/3/rotation = Quaternion(0.740893, 1.05271e-06, -7.88027e-05, 0.671624)
+bones/4/rotation = Quaternion(-0.260661, -7.57972e-05, 4.51611e-05, 0.96543)
+bones/5/rotation = Quaternion(0.977199, -0.0221543, 0.167021, 0.129207)
+bones/6/rotation = Quaternion(0.00246609, -5.67419e-05, 3.02364e-06, 0.999997)
+bones/7/rotation = Quaternion(-0.715598, 0.000256044, 5.11997e-05, 0.698512)
+bones/8/position = Vector3(0.124644, 0.581001, -0.487329)
+bones/10/position = Vector3(-0.124644, 0.103322, 0.256522)
 
 [node name="basically done pants" parent="pantshopefully/Pants Rig/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_h3fgm")
@@ -89,7 +89,7 @@ tree_root = SubResource("AnimationNodeBlendTree_bbd2b")
 anim_player = NodePath("../pantshopefully/AnimationPlayer2")
 active = true
 parameters/Blend2/blend_amount = 1.0
-parameters/Rest/blend_amount = 0.28
+parameters/Rest/blend_amount = 1.0
 parameters/RunSpeedScale/scale = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

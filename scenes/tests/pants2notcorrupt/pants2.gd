@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var anim_tree : AnimationTree
 @export var pants : Node3D
-const SPEED = 12
+@export var SPEED = 12
 const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
