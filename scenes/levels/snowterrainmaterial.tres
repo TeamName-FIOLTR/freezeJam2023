@@ -1,0 +1,84 @@
+[gd_resource type="VisualShader" load_steps=9 format=3 uid="uid://bnf5ppq2dcolh"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_nrarp"]
+input_name = "normal"
+
+[sub_resource type="VisualShaderNodeDotProduct" id="VisualShaderNodeDotProduct_j1ojj"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0, 1, 0)]
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_ie8b1"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, 0.5]
+op_type = 4
+
+[sub_resource type="Curve" id="Curve_4kgvg"]
+_data = [Vector2(0.370333, 0), 0.0, 0.0, 0, 0, Vector2(0.674415, 0.977436), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2lacu"]
+curve = SubResource("Curve_4kgvg")
+
+[sub_resource type="VisualShaderNodeCurveTexture" id="VisualShaderNodeCurveTexture_ipjfb"]
+texture = SubResource("CurveTexture_2lacu")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_rsket"]
+input_name = "inv_view_matrix"
+
+[sub_resource type="VisualShaderNodeTransformVecMult" id="VisualShaderNodeTransformVecMult_y6uf4"]
+operator = 2
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D curve_frg_5 : repeat_disable;
+
+
+
+void fragment() {
+// Input:6
+	mat4 n_out6p0 = INV_VIEW_MATRIX;
+
+
+// Input:2
+	vec3 n_out2p0 = NORMAL;
+
+
+// TransformVectorMult:7
+	vec3 n_out7p0 = (n_out6p0 * vec4(n_out2p0, 0.0)).xyz;
+
+
+// DotProduct:3
+	vec3 n_in3p1 = vec3(0.00000, 1.00000, 0.00000);
+	float n_out3p0 = dot(n_out7p0, n_in3p1);
+
+
+// CurveTexture:5
+	float n_out5p0 = texture(curve_frg_5, vec2(n_out3p0)).r;
+
+
+// Mix:4
+	vec3 n_in4p0 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_in4p1 = vec3(1.00000, 1.00000, 1.00000);
+	vec3 n_out4p0 = mix(n_in4p0, n_in4p1, n_out5p0);
+
+
+// Output:0
+	ALBEDO = n_out4p0;
+
+
+}
+"
+nodes/fragment/0/position = Vector2(920, 80)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_nrarp")
+nodes/fragment/2/position = Vector2(-580, 140)
+nodes/fragment/3/node = SubResource("VisualShaderNodeDotProduct_j1ojj")
+nodes/fragment/3/position = Vector2(-40, 200)
+nodes/fragment/4/node = SubResource("VisualShaderNodeMix_ie8b1")
+nodes/fragment/4/position = Vector2(640, 120)
+nodes/fragment/5/node = SubResource("VisualShaderNodeCurveTexture_ipjfb")
+nodes/fragment/5/position = Vector2(149.925, 226.972)
+nodes/fragment/6/node = SubResource("VisualShaderNodeInput_rsket")
+nodes/fragment/6/position = Vector2(-580, 300)
+nodes/fragment/7/node = SubResource("VisualShaderNodeTransformVecMult_y6uf4")
+nodes/fragment/7/position = Vector2(-240, 260)
+nodes/fragment/connections = PackedInt32Array(4, 0, 0, 0, 3, 0, 5, 0, 5, 0, 4, 2, 6, 0, 7, 0, 2, 0, 7, 1, 7, 0, 3, 0)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgofxphnmrv0h"]
+
+[ext_resource type="Script" path="res://scenes/objects/gimbal_camera.gd" id="1_g4xdk"]
+
+[node name="Gimbal Camera" type="Node3D"]
+script = ExtResource("1_g4xdk")
+
+[node name="Pitch" type="Marker3D" parent="."]
+
+[node name="Yaw" type="Marker3D" parent="Pitch"]
+
+[node name="Roll" type="Marker3D" parent="Pitch/Yaw"]
+
+[node name="Camera3D" type="Camera3D" parent="Pitch/Yaw/Roll"]

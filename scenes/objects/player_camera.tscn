@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://rbacj0enmq33"]
+
+[ext_resource type="Script" path="res://scenes/objects/player_camera.gd" id="1_rwk0x"]
+[ext_resource type="PackedScene" uid="uid://dgofxphnmrv0h" path="res://scenes/objects/gimbal_camera.tscn" id="2_wx0wc"]
+
+[node name="Player Camera" type="Node3D" node_paths=PackedStringArray("gimbal_camera")]
+script = ExtResource("1_rwk0x")
+gimbal_camera = NodePath("Gimbal Camera")
+joystick_sensitivity = 300.0
+mouse_sensitivity = 25.0
+
+[node name="Gimbal Camera" parent="." instance=ExtResource("2_wx0wc")]
+camera_distance = 2.0
+limit_y = true
+rotation_min = Vector3(0, -85, 0)
+rotation_max = Vector3(0, 85, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+collision_mask = 2
