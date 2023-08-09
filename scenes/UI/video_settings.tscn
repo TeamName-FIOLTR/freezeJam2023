@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://6tkjm5sukfm"]
+
+[node name="Video Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBar" type="MenuBar" parent="."]
+layout_mode = 0
+offset_right = 264.0
+offset_bottom = 101.0
+
+[node name="Button" type="Button" parent="MenuBar"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "asdfasdf"
+
+[node name="Button2" type="Button" parent="MenuBar"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "asdfasdf"

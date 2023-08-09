@@ -64,16 +64,16 @@ pants = NodePath("pantshopefully")
 [node name="pantshopefully" parent="." instance=ExtResource("1_lgevu")]
 
 [node name="Skeleton3D" parent="pantshopefully/Pants Rig" index="0"]
-bones/1/position = Vector3(0, 0.950222, 0)
-bones/1/rotation = Quaternion(-1.69e-15, -0.117235, 5.18235e-16, 0.993104)
-bones/2/rotation = Quaternion(0.951754, 0.0371676, -0.113384, 0.282712)
-bones/3/rotation = Quaternion(0.680817, 7.7655e-06, -7.84267e-05, 0.732453)
-bones/4/rotation = Quaternion(-0.280134, -7.66953e-05, 4.36188e-05, 0.959961)
-bones/5/rotation = Quaternion(0.991583, -0.0100053, -0.114848, -0.058937)
-bones/6/rotation = Quaternion(0.247727, -5.49912e-05, 0.000303661, 0.96883)
-bones/7/rotation = Quaternion(-0.716759, 0.000259791, 5.45562e-05, 0.697321)
-bones/8/position = Vector3(0.124644, 0.33708, -0.104208)
-bones/10/position = Vector3(-0.124644, 0.183502, -0.333117)
+bones/1/position = Vector3(0, 0.986821, 0)
+bones/1/rotation = Quaternion(-1.62281e-15, -0.156236, 9.80731e-16, 0.98772)
+bones/2/rotation = Quaternion(0.946543, 0.0492935, -0.152906, 0.279724)
+bones/3/rotation = Quaternion(0.516246, 2.36717e-05, -7.51649e-05, 0.85644)
+bones/4/rotation = Quaternion(-0.363675, -8.0242e-05, 3.66877e-05, 0.931526)
+bones/5/rotation = Quaternion(0.969221, -0.0355108, -0.149791, -0.192128)
+bones/6/rotation = Quaternion(0.137192, -5.6224e-05, 0.000168166, 0.990545)
+bones/7/rotation = Quaternion(-0.702106, 0.000256753, 5.54684e-05, 0.712073)
+bones/8/position = Vector3(0.124644, 0.255325, 0.0437698)
+bones/10/position = Vector3(-0.124644, 0.259966, -0.46465)
 
 [node name="basically done pants" parent="pantshopefully/Pants Rig/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_h3fgm")
