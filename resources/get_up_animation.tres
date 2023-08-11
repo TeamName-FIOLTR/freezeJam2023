@@ -1,0 +1,30 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=6 format=3 uid="uid://bax8tb0lych4o"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dnnv4"]
+animation = &"pantsanimtweatsmaybe/GetUpCrossed"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aubvf"]
+animation = &"pantsanimtweatsmaybe/GetUpCrossed2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_crnvl"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wmtrg"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"get_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ws7is"]
+switch_mode = 2
+advance_mode = 2
+
+[resource]
+states/End/position = Vector2(796, 102.765)
+states/Start/position = Vector2(101.333, 93.5638)
+states/pantsanimtweatsmaybe_GetUpCrossed/node = SubResource("AnimationNodeAnimation_dnnv4")
+states/pantsanimtweatsmaybe_GetUpCrossed/position = Vector2(564, 41.8468)
+states/pantsanimtweatsmaybe_GetUpCrossed2/node = SubResource("AnimationNodeAnimation_aubvf")
+states/pantsanimtweatsmaybe_GetUpCrossed2/position = Vector2(375.333, 141.851)
+transitions = ["Start", "pantsanimtweatsmaybe_GetUpCrossed2", SubResource("AnimationNodeStateMachineTransition_crnvl"), "pantsanimtweatsmaybe_GetUpCrossed2", "pantsanimtweatsmaybe_GetUpCrossed", SubResource("AnimationNodeStateMachineTransition_wmtrg"), "pantsanimtweatsmaybe_GetUpCrossed", "End", SubResource("AnimationNodeStateMachineTransition_ws7is")]
+graph_offset = Vector2(32, -15.4824)

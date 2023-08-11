@@ -1,0 +1,68 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=14 format=3 uid="uid://1xli6vkqh6kv"]
+
+[ext_resource type="AnimationNodeBlendTree" uid="uid://cv8pw5rq585dx" path="res://resources/run_animation_tree.tres" id="1_5dq6i"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mq4u3"]
+animation = &"pantsanimtweatsmaybe/GetUpCrossed2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oijfn"]
+animation = &"pantsanimtweatsmaybe/double kick"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ppaiq"]
+animation = &"pantsanimtweatsmaybe/GetUpCrossed"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_c6nf8"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1h2y3"]
+graph_offset = Vector2(-371.548, 38.4512)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_ppaiq")
+nodes/Animation/position = Vector2(-266.667, 80)
+nodes/stand_up_speed/node = SubResource("AnimationNodeTimeScale_c6nf8")
+nodes/stand_up_speed/position = Vector2(80, 106.667)
+node_connections = [&"output", 0, &"stand_up_speed", &"stand_up_speed", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7klbi"]
+animation = &"pantsanimtweatsmaybe/GetUpCrossed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tkcob"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ld0v8"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"kick"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f1kpg"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"get_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qx2yj"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_723fg"]
+xfade_time = 0.01
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"s kick"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uvnwg"]
+xfade_time = 0.5
+switch_mode = 2
+advance_mode = 2
+
+[resource]
+states/kick/node = SubResource("AnimationNodeAnimation_mq4u3")
+states/kick/position = Vector2(483.667, 100.667)
+states/run_animation/node = ExtResource("1_5dq6i")
+states/run_animation/position = Vector2(329.667, -15.6667)
+"states/s kick/node" = SubResource("AnimationNodeAnimation_oijfn")
+"states/s kick/position" = Vector2(348.667, 176.667)
+"states/spin up/node" = SubResource("AnimationNodeAnimation_7klbi")
+"states/spin up/position" = Vector2(745, 9.33333)
+"states/spin up speed/node" = SubResource("AnimationNodeBlendTree_1h2y3")
+"states/spin up speed/position" = Vector2(594, -5.33333)
+transitions = ["Start", "run_animation", SubResource("AnimationNodeStateMachineTransition_tkcob"), "run_animation", "kick", SubResource("AnimationNodeStateMachineTransition_ld0v8"), "kick", "spin up speed", SubResource("AnimationNodeStateMachineTransition_f1kpg"), "spin up speed", "run_animation", SubResource("AnimationNodeStateMachineTransition_qx2yj"), "run_animation", "s kick", SubResource("AnimationNodeStateMachineTransition_723fg"), "s kick", "run_animation", SubResource("AnimationNodeStateMachineTransition_uvnwg")]
+graph_offset = Vector2(185, -113)

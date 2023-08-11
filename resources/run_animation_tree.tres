@@ -1,0 +1,33 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=7 format=3 uid="uid://cv8pw5rq585dx"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2yrab"]
+animation = &"pantsanimtweatsmaybe/Pants Run Forwards 4 m_s"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u4ai4"]
+animation = &"pantsanimtweatsmaybe/Pants RigAction1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tonnx"]
+animation = &"pantsanimtweatsmaybe/Pants Walk Forwards 1 m_s"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_xs3et"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_71j8o"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5euu1"]
+
+[resource]
+graph_offset = Vector2(-362.545, 138.97)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_tonnx")
+nodes/Animation/position = Vector2(-680, 140)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_2yrab")
+"nodes/Animation 2/position" = Vector2(-560, 300)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_u4ai4")
+"nodes/Animation 3/position" = Vector2(-40, 420)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_xs3et")
+nodes/Blend2/position = Vector2(180, 140)
+nodes/Rest/node = SubResource("AnimationNodeBlend2_71j8o")
+nodes/Rest/position = Vector2(426.667, 186.667)
+nodes/RunSpeedScale/node = SubResource("AnimationNodeTimeScale_5euu1")
+nodes/RunSpeedScale/position = Vector2(-42.13, 301.28)
+nodes/output/position = Vector2(600, 240)
+node_connections = [&"output", 0, &"Rest", &"Blend2", 0, &"Animation", &"Blend2", 1, &"RunSpeedScale", &"Rest", 0, &"Animation 3", &"Rest", 1, &"Blend2", &"RunSpeedScale", 0, &"Animation 2"]
