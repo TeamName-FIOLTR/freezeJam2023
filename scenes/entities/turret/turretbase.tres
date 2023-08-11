@@ -1,0 +1,120 @@
+[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://0q2qb8n45nxd"]
+
+[ext_resource type="Script" path="res://resources/shaders/custom_nodes/get_freeze_color_node.gd" id="1_sehl0"]
+
+[sub_resource type="VisualShaderNodeUIntParameter" id="VisualShaderNodeUIntParameter_ghcpj"]
+parameter_name = "Freeze_Color_Index"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_n00g5"]
+initialized = true
+script = ExtResource("1_sehl0")
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_njcog"]
+initialized = true
+script = ExtResource("1_sehl0")
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_r16cy"]
+constant = 1.0
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_vtf4g"]
+constant = 0.5
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_mapmi"]
+constant = 1.0
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_ut1m0"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, 0.5]
+op_type = 6
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_6e8sw"]
+parameter_name = "Base_Turret_Metal_Color"
+qualifier = 1
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform uint Freeze_Color_Index = 0;
+global uniform vec4 Base_Turret_Metal_Color : source_color;
+
+
+// GetFreezeColor
+
+	global uniform vec4 Freeze_Color_0;
+	global uniform vec4 Freeze_Color_1;
+	global uniform vec4 Freeze_Color_2;
+	global uniform vec4 Freeze_Color_3;
+	global uniform vec4 Freeze_Color_4;
+	global uniform vec4 Freeze_Color_5;
+	
+
+void fragment() {
+// UIntParameter:2
+	uint n_out2p0 = Freeze_Color_Index;
+
+
+	vec4 n_out4p0;
+// GetFreezeColor:4
+	{
+		
+			switch(n_out2p0){
+				case 0u: n_out4p0 = Freeze_Color_0; break;
+				case 1u: n_out4p0 = Freeze_Color_1; break;
+				case 2u: n_out4p0 = Freeze_Color_2; break;
+				case 3u: n_out4p0 = Freeze_Color_3; break;
+				case 4u: n_out4p0 = Freeze_Color_4; break;
+				case 5u: n_out4p0 = Freeze_Color_5; break;
+			}
+			
+	}
+
+
+// ColorParameter:9
+	vec4 n_out9p0 = Base_Turret_Metal_Color;
+
+
+// Mix:8
+	float n_in8p2 = 0.50000;
+	vec4 n_out8p0 = mix(n_out4p0, n_out9p0, n_in8p2);
+
+
+// FloatConstant:5
+	float n_out5p0 = 1.000000;
+
+
+// FloatConstant:6
+	float n_out6p0 = 0.500000;
+
+
+// FloatConstant:7
+	float n_out7p0 = 1.000000;
+
+
+// Output:0
+	ALBEDO = vec3(n_out8p0.xyz);
+	METALLIC = n_out5p0;
+	ROUGHNESS = n_out6p0;
+	SPECULAR = n_out7p0;
+
+
+}
+"
+nodes/fragment/0/position = Vector2(660, 200)
+nodes/fragment/2/node = SubResource("VisualShaderNodeUIntParameter_ghcpj")
+nodes/fragment/2/position = Vector2(-440, 260)
+nodes/fragment/3/node = SubResource("VisualShaderNodeCustom_n00g5")
+nodes/fragment/3/position = Vector2(-160, 1100)
+nodes/fragment/4/node = SubResource("VisualShaderNodeCustom_njcog")
+nodes/fragment/4/position = Vector2(-180, 220)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatConstant_r16cy")
+nodes/fragment/5/position = Vector2(260, 280)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatConstant_vtf4g")
+nodes/fragment/6/position = Vector2(280, 380)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatConstant_mapmi")
+nodes/fragment/7/position = Vector2(440, 440)
+nodes/fragment/8/node = SubResource("VisualShaderNodeMix_ut1m0")
+nodes/fragment/8/position = Vector2(140, 120)
+nodes/fragment/9/node = SubResource("VisualShaderNodeColorParameter_6e8sw")
+nodes/fragment/9/position = Vector2(-140, 320)
+nodes/fragment/connections = PackedInt32Array(2, 0, 4, 0, 5, 0, 0, 2, 6, 0, 0, 3, 7, 0, 0, 4, 4, 0, 8, 0, 9, 0, 8, 1, 8, 0, 0, 0)

@@ -18,8 +18,10 @@ render_priority = 0
 shader = ExtResource("3_5kima")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hq8pe"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_6iexq")
+shader_parameter/Freeze_Color_Index = 0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wbork"]
 radius = 0.183587
@@ -34,16 +36,16 @@ pants = NodePath("pantshopefully")
 [node name="pantshopefully" parent="." instance=ExtResource("1_lgevu")]
 
 [node name="Skeleton3D" parent="pantshopefully/Pants Rig" index="0"]
-bones/1/position = Vector3(0, 0.986821, 0)
-bones/1/rotation = Quaternion(-1.62281e-15, -0.156236, 9.80731e-16, 0.98772)
-bones/2/rotation = Quaternion(0.946543, 0.0492935, -0.152906, 0.279724)
-bones/3/rotation = Quaternion(0.516246, 2.36717e-05, -7.51649e-05, 0.85644)
-bones/4/rotation = Quaternion(-0.363675, -8.0242e-05, 3.66877e-05, 0.931526)
-bones/5/rotation = Quaternion(0.969221, -0.0355108, -0.149791, -0.192128)
-bones/6/rotation = Quaternion(0.137192, -5.6224e-05, 0.000168166, 0.990545)
-bones/7/rotation = Quaternion(-0.702106, 0.000256753, 5.54684e-05, 0.712073)
-bones/8/position = Vector3(0.124644, 0.255325, 0.0437698)
-bones/10/position = Vector3(-0.124644, 0.259966, -0.46465)
+bones/1/position = Vector3(0, 0.973475, 0)
+bones/1/rotation = Quaternion(-1.48746e-15, 0.213191, -1.51481e-15, 0.97701)
+bones/2/rotation = Quaternion(0.977561, 0.00895154, 0.210057, 0.0130631)
+bones/3/rotation = Quaternion(0.543094, 4.76403e-05, -0.00066571, 0.839672)
+bones/4/rotation = Quaternion(-0.491636, -8.46202e-05, 2.49831e-05, 0.870801)
+bones/5/rotation = Quaternion(0.893436, -0.0916055, 0.229243, 0.375271)
+bones/6/rotation = Quaternion(0.432319, -5.11742e-05, 0.000529929, 0.901721)
+bones/7/rotation = Quaternion(-0.609449, 0.000202596, 3.14116e-05, 0.792825)
+bones/8/position = Vector3(0.124644, 0.373422, -0.441976)
+bones/10/position = Vector3(-0.124644, 0.243065, 0.290493)
 
 [node name="basically done pants" parent="pantshopefully/Pants Rig/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_h3fgm")

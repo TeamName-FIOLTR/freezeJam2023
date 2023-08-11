@@ -1,11 +1,16 @@
 extends CharacterBody3D
+class_name CryoPants
 
 @export var anim_tree : AnimationTree 
 @export var heavy_attack_timer : Timer
 @export var pants : Node3D
 @export var SPEED = 12
 const JUMP_VELOCITY = 4.5
-
+@export_range(0,5) var freeze_color_index : int = 0:
+	set(n_index):
+		freeze_color_index = n_index
+		if not is_inside_tree(): await ready # 😔
+		update_freeze_color()
 
 #if false we ignore the input from the joystic for moving
 @export var do_motion_input : bool = true
@@ -84,6 +89,11 @@ func update_movement_animation():
 	anim_tree.set("parameters/spin up speed/stand_up_speed/scale", clamp(speed/4.0,1,1.5))
 	
 	pass 
+
+func update_freeze_color():
+	$"pantshopefully/Pants Rig/Skeleton3D/basically done pants".get_surface_override_material(2).set_shader_parameter("Freeze_Color_Index", freeze_color_index)
+	pass
+
 func kick()->void:
 	anim_tree.set("parameters/conditions/s kick",true)
 func clear_input()->void:
@@ -111,5 +121,11 @@ func _input(event):
 		self.kick()
 		
 	move(event)		
-
+	if event.is_action_pressed("next_color"):
+		freeze_color_index = (freeze_color_index+1)%6
+	elif event.is_action_pressed("previous_color"):
+		freeze_color_index = posmod(freeze_color_index-1,6)
+	
+	if event.is_action_pressed("FREEZE"):
+		get_tree().call_group("Freeze Recievers", "recieve_freeze", freeze_color_index)
 

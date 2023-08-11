@@ -1,0 +1,99 @@
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://ceuvhcckhbnq7"]
+
+[sub_resource type="VisualShaderNodeTextureParameterTriplanar" id="VisualShaderNodeTextureParameterTriplanar_docjo"]
+parameter_name = "IceTriplanar"
+
+[sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_4tjcg"]
+
+[sub_resource type="VisualShaderNodeClamp" id="VisualShaderNodeClamp_6tpme"]
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_n235i"]
+function = 31
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_n7osi"]
+parameter_name = "Freeze_Factor"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D IceTriplanar;
+uniform float Freeze_Factor;
+
+
+// TextureParameterTriplanar
+	vec4 triplanar_texture(sampler2D p_sampler, vec3 p_weights, vec3 p_triplanar_pos) {
+		vec4 samp = vec4(0.0);
+		samp += texture(p_sampler, p_triplanar_pos.xy) * p_weights.z;
+		samp += texture(p_sampler, p_triplanar_pos.xz) * p_weights.y;
+		samp += texture(p_sampler, p_triplanar_pos.zy * vec2(-1.0, 1.0)) * p_weights.x;
+		return samp;
+	}
+
+	uniform vec3 triplanar_scale = vec3(1.0, 1.0, 1.0);
+	uniform vec3 triplanar_offset;
+	uniform float triplanar_sharpness = 0.5;
+
+	varying vec3 triplanar_power_normal;
+	varying vec3 triplanar_pos;
+
+void vertex() {
+// TextureParameterTriplanar
+	{
+		triplanar_power_normal = pow(abs(NORMAL), vec3(triplanar_sharpness));
+		triplanar_power_normal /= dot(triplanar_power_normal, vec3(1.0));
+		triplanar_pos = VERTEX * triplanar_scale + triplanar_offset;
+		triplanar_pos *= vec3(1.0, -1.0, 1.0);
+	}
+}
+
+void fragment() {
+// TextureParameterTriplanar:3
+	vec4 n_out3p0 = triplanar_texture(IceTriplanar, triplanar_power_normal, triplanar_pos);
+
+
+// FloatParameter:7
+	float n_out7p0 = Freeze_Factor;
+
+
+// FloatFunc:6
+	float n_out6p0 = 1.0 - n_out7p0;
+
+
+	float n_out4p0;
+// Remap:4
+	float n_in4p2 = 1.00000;
+	float n_in4p3 = 0.00000;
+	float n_in4p4 = 1.00000;
+	{
+		float __input_range = n_in4p2 - n_out6p0;
+		float __output_range = n_in4p4 - n_in4p3;
+		n_out4p0 = n_in4p3 + __output_range * ((n_out3p0.x - n_out6p0) / __input_range);
+	}
+
+
+// Clamp:5
+	float n_in5p1 = 0.00000;
+	float n_in5p2 = 1.00000;
+	float n_out5p0 = clamp(n_out4p0, n_in5p1, n_in5p2);
+
+
+// Output:0
+	ALPHA = n_out5p0;
+
+
+}
+"
+graph_offset = Vector2(-455.142, 167.94)
+nodes/fragment/0/position = Vector2(720, 140)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTextureParameterTriplanar_docjo")
+nodes/fragment/3/position = Vector2(-200, 0)
+nodes/fragment/4/node = SubResource("VisualShaderNodeRemap_4tjcg")
+nodes/fragment/4/position = Vector2(161.058, 249.503)
+nodes/fragment/5/node = SubResource("VisualShaderNodeClamp_6tpme")
+nodes/fragment/5/position = Vector2(434.845, 211.437)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatFunc_n235i")
+nodes/fragment/6/position = Vector2(-80, 360)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatParameter_n7osi")
+nodes/fragment/7/position = Vector2(-380, 360)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 4, 0, 5, 0, 5, 0, 0, 1, 6, 0, 4, 1, 7, 0, 6, 0)
