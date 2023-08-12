@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://copybjxs8bbvn"]
+
+[ext_resource type="Script" path="res://scenes/objects/lazer_fire.gd" id="1_finvy"]
+[ext_resource type="Shader" uid="uid://dnhbtda0aiijm" path="res://scenes/entities/turret/turretlazershadertest2.tres" id="1_gtrgb"]
+[ext_resource type="Shader" uid="uid://cw83kcmxe338a" path="res://scenes/objects/lazer_fire_beam_material.tres" id="3_yah77"]
+[ext_resource type="AudioStream" uid="uid://br3baqpnr04e8" path="res://assets/sounds/lazers/Laser_02.wav" id="4_748i2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_17dl4"]
+shader = ExtResource("1_gtrgb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_74ee7"]
+render_priority = 0
+shader = ExtResource("3_yah77")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vtn8p"]
+material = SubResource("ShaderMaterial_74ee7")
+height = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mssge"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kh8ys"]
+
+[sub_resource type="TextMesh" id="TextMesh_v04i5"]
+resource_local_to_scene = true
+text = "lol"
+depth = 0.01
+
+[node name="Lazer Fire" type="Marker3D"]
+transform = Transform3D(1, -5.82921e-22, -2.1684e-16, 0, 1, -2.68825e-06, 2.1684e-16, 2.68825e-06, 1, 0, 0, 0)
+script = ExtResource("1_finvy")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.016, 0, 0, 0, 1, 0, 0, 0, 0.016, 0, 0, 0)
+emitting = false
+amount = 8192
+lifetime = 0.1
+one_shot = true
+explosiveness = 1.0
+trail_lifetime = 10.0
+process_material = SubResource("ShaderMaterial_17dl4")
+draw_pass_1 = SubResource("CylinderMesh_vtn8p")
+
+[node name="subemittertest" type="GPUParticles3D" parent="GPUParticles3D"]
+transform = Transform3D(0.5, -9.28543e-10, 9.28543e-10, 9.28543e-10, 0.5, 0, -9.28543e-10, 1.72438e-18, 0.5, 2.32646e-10, -0.459606, -4.32044e-19)
+visible = false
+emitting = false
+amount = 1
+lifetime = 0.77
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_mssge")
+draw_pass_1 = SubResource("BoxMesh_kh8ys")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="GPUParticles3D"]
+visible = false
+height = 1.0
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, -3.69052e-18, 0, -3.69052e-18, 1, 0, 0, 0, 1, 0, -2.98023e-08, 0.00914252)
+target_position = Vector3(0, 0, 1.87)
+
+[node name="Text Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22801e-28, 0.244884, -6.5831e-07)
+visible = false
+mesh = SubResource("TextMesh_v04i5")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_748i2")
+max_polyphony = 128

@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlnovhtsbbr74"]
+
+[ext_resource type="PackedScene" uid="uid://cvi30bbr5yioe" path="res://scenes/entities/turret/turret.tscn" id="1_l4mxc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ji17u"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_jflpc"]
+sky_material = SubResource("ProceduralSkyMaterial_ji17u")
+
+[sub_resource type="Environment" id="Environment_vj5qm"]
+background_mode = 2
+sky = SubResource("Sky_jflpc")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_y50hs"]
+plane = Plane(0, 0, -1, 0)
+
+[node name="turrettestingfeild" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vj5qm")
+
+[node name="Turret2" parent="." instance=ExtResource("1_l4mxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71763, 0, 0)
+freeze_color_index = 1
+
+[node name="Turret" parent="." instance=ExtResource("1_l4mxc")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 2, 2, 5)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.23158)
+shape = SubResource("WorldBoundaryShape3D_y50hs")
