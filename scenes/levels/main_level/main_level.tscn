@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuc7fibup34sg"]
+
+[ext_resource type="PackedScene" uid="uid://g1twwryefig0" path="res://scenes/tests/pants2notcorrupt/pants2.tscn" id="1_ryrv5"]
+[ext_resource type="PackedScene" uid="uid://cvi30bbr5yioe" path="res://scenes/entities/turret/turret.tscn" id="2_ntg40"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fnnea"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_scnsk"]
+sky_material = SubResource("ProceduralSkyMaterial_fnnea")
+
+[sub_resource type="Environment" id="Environment_vjq8r"]
+background_mode = 2
+sky = SubResource("Sky_scnsk")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vjq8r")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+use_collision = true
+size = Vector3(20, 2, 20)
+
+[node name="pants2" parent="." instance=ExtResource("1_ryrv5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.26751, 0, -4.66846)
+
+[node name="Turret" parent="." instance=ExtResource("2_ntg40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+freeze_color_index = 1
+
+[node name="Turret2" parent="." instance=ExtResource("2_ntg40")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, -6)
+
+[node name="Turret3" parent="." instance=ExtResource("2_ntg40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3)
+freeze_color_index = 2
+
+[node name="Turret4" parent="." instance=ExtResource("2_ntg40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -3)
+freeze_color_index = 2
+frozen = true
+freeze_factor = 1.0

@@ -65,4 +65,4 @@ states/run_animation/position = Vector2(329.667, -15.6667)
 "states/spin up speed/node" = SubResource("AnimationNodeBlendTree_1h2y3")
 "states/spin up speed/position" = Vector2(594, -5.33333)
 transitions = ["Start", "run_animation", SubResource("AnimationNodeStateMachineTransition_tkcob"), "run_animation", "kick", SubResource("AnimationNodeStateMachineTransition_ld0v8"), "kick", "spin up speed", SubResource("AnimationNodeStateMachineTransition_f1kpg"), "spin up speed", "run_animation", SubResource("AnimationNodeStateMachineTransition_qx2yj"), "run_animation", "s kick", SubResource("AnimationNodeStateMachineTransition_723fg"), "s kick", "run_animation", SubResource("AnimationNodeStateMachineTransition_uvnwg")]
-graph_offset = Vector2(185, -113)
+graph_offset = Vector2(44, -52)

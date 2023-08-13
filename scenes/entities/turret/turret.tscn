@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cvi30bbr5yioe"]
+[gd_scene load_steps=26 format=3 uid="uid://cvi30bbr5yioe"]
 
 [ext_resource type="PackedScene" uid="uid://dnsgy4jg5dte5" path="res://assets/models/turret/lilturret.glb" id="1_halt4"]
 [ext_resource type="Script" path="res://scenes/entities/turret/turret.gd" id="1_l2on8"]
@@ -11,6 +11,8 @@
 [ext_resource type="Shader" uid="uid://c5fvna40nyhpu" path="res://scenes/entities/turret/turretscanninglazer.tres" id="8_f74pd"]
 [ext_resource type="PackedScene" uid="uid://copybjxs8bbvn" path="res://scenes/objects/lazer_fire.tscn" id="10_yn1mw"]
 [ext_resource type="AudioStream" uid="uid://bmxdoid1bkygt" path="res://assets/sounds/hums/SpaceEngine_ControlRoom_Loop_01.wav" id="11_pt8jd"]
+[ext_resource type="AudioStream" uid="uid://l6gn3orro2xn" path="res://assets/sounds/ice/qubodupIceDamage01.wav" id="12_pl6rc"]
+[ext_resource type="AudioStream" uid="uid://dkvh6k8wqxria" path="res://assets/sounds/ice/qubodupIceDamage01reversed.wav" id="13_y73lu"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6fdis"]
 
@@ -69,6 +71,7 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("8_f74pd")
 shader_parameter/Freeze_Color_Index = 0
+shader_parameter/Freeze_Factor = null
 shader_parameter/Scanning_Lazer_Brightness = 0.255
 shader_parameter/Scanning_Beam_Brightness = 1.0
 
@@ -82,7 +85,10 @@ points = PackedVector3Array(0.137511, 0.399841, 0.283383, 0.133403, 0.509246, 0.
 script = ExtResource("1_l2on8")
 tracking_angle = 45.0
 ugh = NodePath("lilturret/Turret Rig/Skeleton3D/BoneAttachment3D/ugh")
+barrel_rotation = 1769.96
 rig = NodePath("lilturret/Turret Rig/Skeleton3D")
+fire_rate = 2000.0
+whirl_down_speed = 0.5
 lazer_fire_l = NodePath("lilturret/Turret Rig/Skeleton3D/BoneAttachment3D/Lazer Fire L")
 lazer_fire_r = NodePath("lilturret/Turret Rig/Skeleton3D/BoneAttachment3D/Lazer Fire R")
 
@@ -90,9 +96,9 @@ lazer_fire_r = NodePath("lilturret/Turret Rig/Skeleton3D/BoneAttachment3D/Lazer 
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="Skeleton3D" parent="lilturret/Turret Rig" index="0"]
-bones/2/rotation = Quaternion(1.4013e-45, 1.4013e-45, 1.4013e-45, 1)
-bones/3/rotation = Quaternion(0.5, 0.5, 0.5, 0.5)
-bones/4/rotation = Quaternion(0.587938, 0.392847, 0.392847, 0.587938)
+bones/2/rotation = Quaternion(0, 0, 0, 1)
+bones/3/rotation = Quaternion(-0.35334, -0.612496, -0.612496, -0.35334)
+bones/4/rotation = Quaternion(-0.66966, -0.227058, -0.227058, -0.66966)
 
 [node name="Turret Model" parent="lilturret/Turret Rig/Skeleton3D" index="0"]
 material_overlay = SubResource("ShaderMaterial_ilc5n")
@@ -103,7 +109,7 @@ surface_material_override/3 = SubResource("ShaderMaterial_bby27")
 surface_material_override/4 = SubResource("ShaderMaterial_cm2qc")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="lilturret/Turret Rig/Skeleton3D" index="1"]
-transform = Transform3D(1, 1.85709e-09, -1.85709e-09, -1.85709e-09, 1, 3.44877e-18, 1.85709e-09, 2.8026e-45, 1, 6.20882e-10, 0.459606, -7.75482e-26)
+transform = Transform3D(1, 1.85709e-09, -1.85709e-09, -1.85709e-09, 1, 3.44877e-18, 1.85709e-09, 0, 1, 6.20882e-10, 0.459606, -7.75482e-26)
 bone_name = "Head"
 bone_idx = 2
 
@@ -142,6 +148,14 @@ shape = SubResource("ConvexPolygonShape3D_cjskq")
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0.728004)
 visible = false
+
+[node name="Freeze Sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("12_pl6rc")
+max_polyphony = 4
+
+[node name="UnFreeze Sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("13_y73lu")
+max_polyphony = 4
 
 [connection signal="body_entered" from="lilturret/Turret Rig/Skeleton3D/BoneAttachment3D/ugh/MeshInstance3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="lilturret/Turret Rig/Skeleton3D/BoneAttachment3D/ugh/MeshInstance3D/Area3D" to="." method="_on_area_3d_body_exited"]

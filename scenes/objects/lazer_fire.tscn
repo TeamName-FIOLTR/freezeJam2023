@@ -66,4 +66,5 @@ mesh = SubResource("TextMesh_v04i5")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_748i2")
-max_polyphony = 128
+max_polyphony = 512
+bus = &"Guns"

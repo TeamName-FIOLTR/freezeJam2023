@@ -1,7 +1,7 @@
 [gd_resource type="AnimationNodeBlendTree" load_steps=7 format=3 uid="uid://cv8pw5rq585dx"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2yrab"]
-animation = &"pantsanimtweatsmaybe/Pants Run Forwards 4 m_s"
+animation = &"pantsanimtweatsmaybe/FIXED Pants Run Forwards 4 m_s"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u4ai4"]
 animation = &"pantsanimtweatsmaybe/Pants RigAction1"
@@ -16,11 +16,11 @@ animation = &"pantsanimtweatsmaybe/Pants Walk Forwards 1 m_s"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5euu1"]
 
 [resource]
-graph_offset = Vector2(-362.545, 138.97)
+graph_offset = Vector2(-666.785, 231.818)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_tonnx")
 nodes/Animation/position = Vector2(-680, 140)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_2yrab")
-"nodes/Animation 2/position" = Vector2(-560, 300)
+"nodes/Animation 2/position" = Vector2(-600, 300)
 "nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_u4ai4")
 "nodes/Animation 3/position" = Vector2(-40, 420)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_xs3et")

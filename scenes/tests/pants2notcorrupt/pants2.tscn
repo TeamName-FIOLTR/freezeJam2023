@@ -36,16 +36,16 @@ pants = NodePath("pantshopefully")
 [node name="pantshopefully" parent="." instance=ExtResource("1_lgevu")]
 
 [node name="Skeleton3D" parent="pantshopefully/Pants Rig" index="0"]
-bones/1/position = Vector3(0, 0.973475, 0)
-bones/1/rotation = Quaternion(-1.48746e-15, 0.213191, -1.51481e-15, 0.97701)
-bones/2/rotation = Quaternion(0.977561, 0.00895154, 0.210057, 0.0130631)
-bones/3/rotation = Quaternion(0.543094, 4.76403e-05, -0.00066571, 0.839672)
-bones/4/rotation = Quaternion(-0.491636, -8.46202e-05, 2.49831e-05, 0.870801)
-bones/5/rotation = Quaternion(0.893436, -0.0916055, 0.229243, 0.375271)
-bones/6/rotation = Quaternion(0.432319, -5.11742e-05, 0.000529929, 0.901721)
-bones/7/rotation = Quaternion(-0.609449, 0.000202596, 3.14116e-05, 0.792825)
-bones/8/position = Vector3(0.124644, 0.373422, -0.441976)
-bones/10/position = Vector3(-0.124644, 0.243065, 0.290493)
+bones/1/position = Vector3(0, 0.942452, 0)
+bones/1/rotation = Quaternion(-1.65691e-15, -0.137594, 8.76918e-16, 0.990489)
+bones/2/rotation = Quaternion(0.952711, 0.0424581, -0.133647, 0.269588)
+bones/3/rotation = Quaternion(0.700491, 4.04946e-05, -0.000858626, 0.71366)
+bones/4/rotation = Quaternion(-0.266733, -7.60798e-05, 4.46832e-05, 0.963771)
+bones/5/rotation = Quaternion(0.983096, 0.0132277, -0.133714, 0.124368)
+bones/6/rotation = Quaternion(0.409417, -5.17774e-05, 0.000501858, 0.912347)
+bones/7/rotation = Quaternion(-0.718457, 0.000260168, 5.4437e-05, 0.695571)
+bones/8/position = Vector3(0.124644, 0.3526, -0.128226)
+bones/10/position = Vector3(-0.124644, 0.178069, -0.182121)
 
 [node name="basically done pants" parent="pantshopefully/Pants Rig/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_h3fgm")
@@ -80,5 +80,9 @@ target_offset = 0.1
 
 [node name="heavy attack" type="Timer" parent="."]
 one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [editable path="pantshopefully"]

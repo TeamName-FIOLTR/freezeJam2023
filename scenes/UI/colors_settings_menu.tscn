@@ -1,0 +1,246 @@
+[gd_scene load_steps=14 format=3 uid="uid://d1fevotim5yd4"]
+
+[ext_resource type="Script" path="res://scenes/UI/colors_settings_menu.gd" id="1_qi8ew"]
+[ext_resource type="Shader" uid="uid://0d7w671gg6is" path="res://scenes/UI/colors_settings_menu_color_preview.tres" id="2_aofyi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0veu"]
+resource_local_to_scene = true
+shader = ExtResource("2_aofyi")
+shader_parameter/Freeze_Color_Index = 0
+
+[sub_resource type="Gradient" id="Gradient_3wl44"]
+offsets = PackedFloat32Array(0, 0.167, 0.333, 0.5, 0.667, 0.833, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f025q"]
+gradient = SubResource("Gradient_3wl44")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5jqab"]
+texture = SubResource("GradientTexture1D_f025q")
+texture_margin_top = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xp1nm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1c7qy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gy22"]
+resource_local_to_scene = true
+shader = ExtResource("2_aofyi")
+shader_parameter/Freeze_Color_Index = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c4a0g"]
+resource_local_to_scene = true
+shader = ExtResource("2_aofyi")
+shader_parameter/Freeze_Color_Index = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m151q"]
+resource_local_to_scene = true
+shader = ExtResource("2_aofyi")
+shader_parameter/Freeze_Color_Index = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kypoc"]
+resource_local_to_scene = true
+shader = ExtResource("2_aofyi")
+shader_parameter/Freeze_Color_Index = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i5a1u"]
+resource_local_to_scene = true
+shader = ExtResource("2_aofyi")
+shader_parameter/Freeze_Color_Index = 5
+
+[node name="Colors Settings Menu" type="Control" node_paths=PackedStringArray("default_focus", "freeze_color_slider_0", "freeze_color_slider_1", "freeze_color_slider_2", "freeze_color_slider_3", "freeze_color_slider_4", "freeze_color_slider_5")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qi8ew")
+default_focus = NodePath("AspectRatioContainer/VBoxContainer/FreezeColor0Slider")
+freeze_color_slider_0 = NodePath("AspectRatioContainer/VBoxContainer/FreezeColor0Slider")
+freeze_color_slider_1 = NodePath("AspectRatioContainer/VBoxContainer/FreezeColor1Slider")
+freeze_color_slider_2 = NodePath("AspectRatioContainer/VBoxContainer/FreezeColor2Slider")
+freeze_color_slider_3 = NodePath("AspectRatioContainer/VBoxContainer/FreezeColor3Slider")
+freeze_color_slider_4 = NodePath("AspectRatioContainer/VBoxContainer/FreezeColor4Slider")
+freeze_color_slider_5 = NodePath("AspectRatioContainer/VBoxContainer/FreezeColor5Slider")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Freeze Color 1" type="Label" parent="AspectRatioContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Freeze Color 1"
+
+[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer/VBoxContainer/HBoxContainer"]
+material = SubResource("ShaderMaterial_u0veu")
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FreezeColor0Slider" type="HSlider" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/slider = SubResource("StyleBoxTexture_5jqab")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_xp1nm")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_1c7qy")
+max_value = 360.0
+step = 6.0
+
+[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Freeze Color 2" type="Label" parent="AspectRatioContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Freeze Color 2"
+
+[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer/VBoxContainer/HBoxContainer2"]
+material = SubResource("ShaderMaterial_0gy22")
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FreezeColor1Slider" type="HSlider" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/slider = SubResource("StyleBoxTexture_5jqab")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_xp1nm")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_1c7qy")
+max_value = 360.0
+step = 6.0
+value = 60.0
+
+[node name="HSeparator2" type="HSeparator" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Freeze Color 3" type="Label" parent="AspectRatioContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Freeze Color 3"
+
+[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer/VBoxContainer/HBoxContainer3"]
+material = SubResource("ShaderMaterial_c4a0g")
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FreezeColor2Slider" type="HSlider" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/slider = SubResource("StyleBoxTexture_5jqab")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_xp1nm")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_1c7qy")
+max_value = 360.0
+step = 6.0
+value = 120.0
+
+[node name="HSeparator3" type="HSeparator" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Freeze Color 4" type="Label" parent="AspectRatioContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Freeze Color 4"
+
+[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer/VBoxContainer/HBoxContainer4"]
+material = SubResource("ShaderMaterial_m151q")
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FreezeColor3Slider" type="HSlider" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/slider = SubResource("StyleBoxTexture_5jqab")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_xp1nm")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_1c7qy")
+max_value = 360.0
+step = 6.0
+value = 180.0
+
+[node name="HSeparator4" type="HSeparator" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Freeze Color 5" type="Label" parent="AspectRatioContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Freeze Color 5"
+
+[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer/VBoxContainer/HBoxContainer5"]
+material = SubResource("ShaderMaterial_kypoc")
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FreezeColor4Slider" type="HSlider" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/slider = SubResource("StyleBoxTexture_5jqab")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_xp1nm")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_1c7qy")
+max_value = 360.0
+step = 6.0
+value = 240.0
+
+[node name="HSeparator5" type="HSeparator" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Freeze Color 6" type="Label" parent="AspectRatioContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Freeze Color 6"
+
+[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer/VBoxContainer/HBoxContainer6"]
+material = SubResource("ShaderMaterial_i5a1u")
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FreezeColor5Slider" type="HSlider" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/slider = SubResource("StyleBoxTexture_5jqab")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_xp1nm")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_1c7qy")
+max_value = 360.0
+step = 6.0
+value = 300.0
+
+[node name="HSeparator6" type="HSeparator" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="value_changed" from="AspectRatioContainer/VBoxContainer/FreezeColor0Slider" to="." method="_on_freeze_color_0_slider_value_changed"]
+[connection signal="value_changed" from="AspectRatioContainer/VBoxContainer/FreezeColor1Slider" to="." method="_on_freeze_color_1_slider_value_changed"]
+[connection signal="value_changed" from="AspectRatioContainer/VBoxContainer/FreezeColor2Slider" to="." method="_on_freeze_color_2_slider_value_changed"]
+[connection signal="value_changed" from="AspectRatioContainer/VBoxContainer/FreezeColor3Slider" to="." method="_on_freeze_color_3_slider_value_changed"]
+[connection signal="value_changed" from="AspectRatioContainer/VBoxContainer/FreezeColor4Slider" to="." method="_on_freeze_color_4_slider_value_changed"]
+[connection signal="value_changed" from="AspectRatioContainer/VBoxContainer/FreezeColor5Slider" to="." method="_on_freeze_color_5_slider_value_changed"]

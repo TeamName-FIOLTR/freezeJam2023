@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=31 format=3 uid="uid://c5fvna40nyhpu"]
+[gd_resource type="VisualShader" load_steps=34 format=3 uid="uid://c5fvna40nyhpu"]
 
 [ext_resource type="Script" path="res://resources/shaders/custom_nodes/get_freeze_color_node.gd" id="1_5mphp"]
 
@@ -74,9 +74,18 @@ operator = 2
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_teqoa"]
 parameter_name = "Scanning_Beam_Brightness"
 
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_nkkkn"]
+parameter_name = "Freeze_Factor"
+
 [sub_resource type="VisualShaderNodeUIntParameter" id="VisualShaderNodeUIntParameter_glrbj"]
 parameter_name = "Freeze_Color_Index"
 default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_62s5u"]
+function = 31
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_jb0kv"]
+operator = 2
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_w0wqa"]
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, 0.5]
@@ -102,6 +111,7 @@ code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform uint Freeze_Color_Index = 0;
+uniform float Freeze_Factor;
 uniform sampler2D curve_frg_11 : repeat_disable;
 uniform float Scanning_Lazer_Brightness;
 uniform float Scanning_Beam_Brightness;
@@ -138,6 +148,14 @@ void fragment() {
 	}
 
 
+// FloatParameter:29
+	float n_out29p0 = Freeze_Factor;
+
+
+// FloatFunc:30
+	float n_out30p0 = 1.0 - n_out29p0;
+
+
 // FloatConstant:9
 	float n_out9p0 = 0.500000;
 
@@ -158,6 +176,10 @@ void fragment() {
 // Mix:8
 	float n_in8p0 = 0.00000;
 	float n_out8p0 = mix(n_in8p0, n_out9p0, n_out11p0);
+
+
+// FloatOp:31
+	float n_out31p0 = n_out30p0 * n_out8p0;
 
 
 // FloatParameter:5
@@ -251,13 +273,14 @@ void fragment() {
 
 // Output:0
 	ALBEDO = vec3(n_out2p0.xyz);
-	ALPHA = n_out8p0;
+	ALPHA = n_out31p0;
 	EMISSION = n_out4p0;
 
 
 }
 "
-nodes/fragment/0/position = Vector2(1360, 440)
+graph_offset = Vector2(121.119, -151.651)
+nodes/fragment/0/position = Vector2(1480, 440)
 nodes/fragment/2/node = SubResource("VisualShaderNodeCustom_cw70r")
 nodes/fragment/2/position = Vector2(-280, 260)
 nodes/fragment/3/node = SubResource("VisualShaderNodeUIntParameter_glrbj")
@@ -312,4 +335,10 @@ nodes/fragment/27/node = SubResource("VisualShaderNodeFloatOp_48hnq")
 nodes/fragment/27/position = Vector2(1036.26, 978.347)
 nodes/fragment/28/node = SubResource("VisualShaderNodeFloatParameter_teqoa")
 nodes/fragment/28/position = Vector2(760, 1160)
-nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 2, 0, 4, 1, 4, 0, 0, 5, 6, 0, 7, 0, 9, 0, 8, 1, 7, 1, 11, 0, 11, 0, 8, 2, 11, 0, 10, 2, 10, 0, 4, 2, 6, 0, 12, 0, 12, 0, 15, 0, 15, 0, 16, 0, 12, 0, 17, 0, 17, 0, 13, 0, 14, 0, 18, 0, 18, 0, 13, 1, 20, 0, 19, 0, 13, 0, 21, 0, 21, 0, 22, 0, 23, 0, 21, 1, 24, 0, 23, 0, 19, 0, 25, 0, 25, 0, 14, 0, 5, 0, 26, 0, 22, 0, 27, 0, 27, 0, 26, 1, 26, 0, 10, 1, 28, 0, 27, 1, 8, 0, 0, 1, 2, 0, 0, 0)
+nodes/fragment/29/node = SubResource("VisualShaderNodeFloatParameter_nkkkn")
+nodes/fragment/29/position = Vector2(1020, 260)
+nodes/fragment/30/node = SubResource("VisualShaderNodeFloatFunc_62s5u")
+nodes/fragment/30/position = Vector2(1355.4, 312.357)
+nodes/fragment/31/node = SubResource("VisualShaderNodeFloatOp_jb0kv")
+nodes/fragment/31/position = Vector2(1656.31, 342.357)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 2, 0, 4, 1, 4, 0, 0, 5, 6, 0, 7, 0, 9, 0, 8, 1, 7, 1, 11, 0, 11, 0, 8, 2, 11, 0, 10, 2, 10, 0, 4, 2, 6, 0, 12, 0, 12, 0, 15, 0, 15, 0, 16, 0, 12, 0, 17, 0, 17, 0, 13, 0, 14, 0, 18, 0, 18, 0, 13, 1, 20, 0, 19, 0, 13, 0, 21, 0, 21, 0, 22, 0, 23, 0, 21, 1, 24, 0, 23, 0, 19, 0, 25, 0, 25, 0, 14, 0, 5, 0, 26, 0, 22, 0, 27, 0, 27, 0, 26, 1, 26, 0, 10, 1, 28, 0, 27, 1, 2, 0, 0, 0, 29, 0, 30, 0, 30, 0, 31, 0, 8, 0, 31, 1, 31, 0, 0, 1)

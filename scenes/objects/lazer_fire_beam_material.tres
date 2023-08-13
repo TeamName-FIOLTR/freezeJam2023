@@ -166,7 +166,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-506.1, -102.63)
 modes/blend = 1
 varyings/particle_life_ratio = "0,0"
 varyings/freeze_index = "0,0"

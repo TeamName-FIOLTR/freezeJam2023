@@ -44,6 +44,7 @@ func on_anim_finished(anim):
 	pass
 
 func _physics_process(delta):
+	$Label.text = str(Engine.get_frames_per_second())
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -110,7 +111,7 @@ func move(event)->void:
 	elif event is InputEventKey:
 		keyboard_input = Input.get_vector("leftwards", "rightwards", "forwards", "backwards")
 
-var did_heavy_attack : bool = false 
+var did_heavy_attack : bool = false
 
 func _input(event):
 	if Input.is_action_just_pressed("kick"):
