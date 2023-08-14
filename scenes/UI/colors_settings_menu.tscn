@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1fevotim5yd4"]
+[gd_scene load_steps=20 format=3 uid="uid://d1fevotim5yd4"]
 
 [ext_resource type="Script" path="res://scenes/UI/colors_settings_menu.gd" id="1_qi8ew"]
 [ext_resource type="Shader" uid="uid://0d7w671gg6is" path="res://scenes/UI/colors_settings_menu_color_preview.tres" id="2_aofyi"]
@@ -7,6 +7,26 @@
 resource_local_to_scene = true
 shader = ExtResource("2_aofyi")
 shader_parameter/Freeze_Color_Index = 0
+
+[sub_resource type="Image" id="Image_cl1tf"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 18, 253, 253, 253, 100, 255, 255, 255, 156, 254, 254, 254, 183, 254, 254, 254, 183, 255, 255, 255, 156, 253, 253, 253, 99, 255, 255, 255, 17, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 65, 254, 254, 254, 183, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 182, 255, 255, 255, 63, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 65, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 255, 255, 255, 63, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 18, 254, 254, 254, 183, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 181, 255, 255, 255, 16, 255, 255, 255, 0, 255, 255, 255, 0, 253, 253, 253, 100, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 156, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 155, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 183, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 182, 255, 255, 255, 0, 255, 255, 255, 0, 254, 254, 254, 183, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 181, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 156, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 154, 255, 255, 255, 0, 255, 255, 255, 0, 253, 253, 253, 99, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 253, 253, 253, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 17, 254, 254, 254, 182, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 180, 255, 255, 255, 15, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 63, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 255, 255, 255, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 63, 254, 254, 254, 181, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 191, 254, 254, 254, 180, 255, 255, 255, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 16, 255, 255, 255, 97, 254, 254, 254, 155, 254, 254, 254, 182, 254, 254, 254, 181, 254, 254, 254, 154, 253, 253, 253, 97, 255, 255, 255, 15, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_oyemj"]
+image = SubResource("Image_cl1tf")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7w5g"]
+atlas = SubResource("ImageTexture_oyemj")
+region = Rect2(5, 0, 6, 16)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sd0fr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2qfwk"]
 
 [sub_resource type="Gradient" id="Gradient_3wl44"]
 offsets = PackedFloat32Array(0, 0.167, 0.333, 0.5, 0.667, 0.833, 1)
@@ -19,14 +39,20 @@ gradient = SubResource("Gradient_3wl44")
 texture = SubResource("GradientTexture1D_f025q")
 texture_margin_top = 5.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xp1nm"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1c7qy"]
+[sub_resource type="Theme" id="Theme_n610p"]
+HSlider/icons/grabber = SubResource("AtlasTexture_w7w5g")
+HSlider/styles/grabber_area = SubResource("StyleBoxEmpty_sd0fr")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxEmpty_2qfwk")
+HSlider/styles/slider = SubResource("StyleBoxTexture_5jqab")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0gy22"]
 resource_local_to_scene = true
 shader = ExtResource("2_aofyi")
 shader_parameter/Freeze_Color_Index = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xp1nm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1c7qy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c4a0g"]
 resource_local_to_scene = true
@@ -92,9 +118,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_styles/slider = SubResource("StyleBoxTexture_5jqab")
-theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_xp1nm")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_1c7qy")
+theme = SubResource("Theme_n610p")
 max_value = 360.0
 step = 6.0
 
@@ -118,6 +142,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme = SubResource("Theme_n610p")
 theme_override_styles/slider = SubResource("StyleBoxTexture_5jqab")
 theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_xp1nm")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_1c7qy")
@@ -145,6 +170,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme = SubResource("Theme_n610p")
 theme_override_styles/slider = SubResource("StyleBoxTexture_5jqab")
 theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_xp1nm")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_1c7qy")
@@ -172,6 +198,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme = SubResource("Theme_n610p")
 theme_override_styles/slider = SubResource("StyleBoxTexture_5jqab")
 theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_xp1nm")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_1c7qy")
@@ -199,6 +226,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme = SubResource("Theme_n610p")
 theme_override_styles/slider = SubResource("StyleBoxTexture_5jqab")
 theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_xp1nm")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_1c7qy")
@@ -226,6 +254,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme = SubResource("Theme_n610p")
 theme_override_styles/slider = SubResource("StyleBoxTexture_5jqab")
 theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_xp1nm")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_1c7qy")

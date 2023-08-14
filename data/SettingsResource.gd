@@ -3,6 +3,7 @@ class_name SettingsResource
 
 @export var Audio : AudioSettings = AudioSettings.new()
 @export var Colors : ColorSettings = ColorSettings.new()
+@export var Controls : ControlSettings = ControlSettings.new()
 
 func _init():
 	pass
@@ -27,3 +28,4 @@ static func load_from(path : String = Globals.SettingsPath):
 func load_settings():
 	Audio.load_settings()
 	Colors.load_settings()
+	Controls.load_settings()

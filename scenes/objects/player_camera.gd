@@ -9,6 +9,9 @@ var joystick_input_vec : Vector2
 var mouse_input_vec : Vector2
 @export var mouse_sensitivity : float # another multicusor, btw
 
+@export var invert_x : bool
+@export var invert_y : bool
+
 @export var target_distance : float = 10.0
 @export var target_offset : float = 0.01
 # Called when the node enters the scene tree for the first time.
@@ -19,10 +22,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	joystick_sensitivity = Globals.Settings.Controls.ControllerSensitivity
+	mouse_sensitivity = Globals.Settings.Controls.MouseSensitivity
+	invert_x = Globals.Settings.Controls.InvertX
+	invert_y = Globals.Settings.Controls.InvertY
 	var degrees = joystick_input_vec*joystick_sensitivity+mouse_input_vec*mouse_sensitivity
 	mouse_input_vec = Vector2.ZERO
-	gimbal_camera.gimbal_rotation_degrees.x += -degrees.x*delta
-	gimbal_camera.gimbal_rotation_degrees.y += degrees.y*delta
+	gimbal_camera.gimbal_rotation_degrees.x += -degrees.x*delta*(2*float(invert_x)-1)
+	gimbal_camera.gimbal_rotation_degrees.y += degrees.y*delta*(2*float(invert_y)-1)
 	pass
 
 func _physics_process(delta):

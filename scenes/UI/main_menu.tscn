@@ -1,26 +1,42 @@
-[gd_scene format=3 uid="uid://cqxk8u0jrtpwb"]
+[gd_scene load_steps=3 format=3 uid="uid://cqxk8u0jrtpwb"]
 
-[node name="Main Menu" type="Control"]
+[ext_resource type="Script" path="res://scenes/UI/main_menu.gd" id="1_4d0bo"]
+[ext_resource type="PackedScene" uid="uid://baum672uer6a2" path="res://scenes/levels/main_level_for_real/main_level_for_real.tscn" id="2_ow2r8"]
+
+[node name="Main Menu" type="Control" node_paths=PackedStringArray("default_focus")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4d0bo")
+default_focus = NodePath("VBoxContainer/Play Button")
+play_level = ExtResource("2_ow2r8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -66.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Play Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Play"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
-visible = false
+[node name="Settings Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Settings"
+
+[node name="Credits Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[connection signal="pressed" from="VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits Button" to="." method="_on_credits_button_pressed"]

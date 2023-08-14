@@ -68,10 +68,10 @@ func _on_freeze_color_5_slider_value_changed(value):
 
 func _on_visibility_changed():
 	if visible:
-		sync_ui()
+#		sync_ui()
 		default_focus.grab_focus()
 		pass
 	else:
 		pass
-		#Globals.Settings.save()
+#		Globals.Settings.save()
 	pass # Replace with function body.

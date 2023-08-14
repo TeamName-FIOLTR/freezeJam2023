@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpfn6arr73wtq"]
+
+[ext_resource type="Script" path="res://scenes/UI/win_menu.gd" id="1_8llf4"]
+[ext_resource type="AudioStream" uid="uid://b3hlpw1qqb4sv" path="res://assets/sounds/you won.wav" id="2_gw42y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q4dnd"]
+font_size = 71
+
+[node name="Win Menu" type="Control" node_paths=PackedStringArray("winlabel", "default_focus")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8llf4")
+winlabel = NodePath("VBoxContainer/Label")
+default_focus = NodePath("VBoxContainer/VBoxContainer/Retry Button")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.0941176, 0.2, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "YOU WIN!!
+with "
+label_settings = SubResource("LabelSettings_q4dnd")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Retry Button" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "RETRY"
+
+[node name="Menu Button" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_gw42y")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Retry Button" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Menu Button" to="." method="_on_menu_button_pressed"]

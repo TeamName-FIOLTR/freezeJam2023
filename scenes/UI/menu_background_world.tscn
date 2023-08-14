@@ -1,0 +1,195 @@
+[gd_scene load_steps=25 format=3 uid="uid://bbsiobg21n74j"]
+
+[ext_resource type="Script" path="res://scenes/UI/menu_background_world.gd" id="1_ha0st"]
+[ext_resource type="Shader" uid="uid://ceuvhcckhbnq7" path="res://scenes/entities/turret/iceshadermaybe.tres" id="1_lvrch"]
+[ext_resource type="FontFile" uid="uid://bkkf3ijutmm5" path="res://assets/fonts/ASIX-FOUNDER-Italic.otf" id="2_b8mnu"]
+[ext_resource type="Shader" uid="uid://bvhmnq358htnu" path="res://scenes/UI/CRYO_text_material.tres" id="3_v7yjy"]
+[ext_resource type="FontFile" uid="uid://bp3182038abur" path="res://assets/fonts/Updock-Regular.otf" id="4_n1flp"]
+[ext_resource type="FontFile" uid="uid://csomxnybh8g7t" path="res://assets/fonts/ThirdStreet.ttf" id="5_hw04v"]
+[ext_resource type="Shader" uid="uid://gkhhtww5oh8f" path="res://scenes/UI/OFF_text_material.tres" id="6_xwltt"]
+[ext_resource type="PackedScene" uid="uid://ct5gll0ghkw0p" path="res://assets/models/title_text/pants.glb" id="7_pbgtj"]
+[ext_resource type="Shader" uid="uid://biuy8skw70lsv" path="res://scenes/UI/PANTS_text_material.tres" id="8_s5o1o"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_aegvn"]
+
+[sub_resource type="Sky" id="Sky_uig80"]
+sky_material = SubResource("PhysicalSkyMaterial_aegvn")
+
+[sub_resource type="Environment" id="Environment_b6nta"]
+background_mode = 1
+sky = SubResource("Sky_uig80")
+glow_enabled = true
+glow_intensity = 0.05
+glow_strength = 0.84
+glow_blend_mode = 1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6fdis"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wwjca"]
+seamless = true
+noise = SubResource("FastNoiseLite_6fdis")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7iqkg"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_lvrch")
+shader_parameter/Freeze_Factor = null
+shader_parameter/triplanar_scale = Vector3(1, 1, 1)
+shader_parameter/triplanar_offset = null
+shader_parameter/triplanar_sharpness = 0.5
+shader_parameter/IceTriplanar = SubResource("NoiseTexture2D_wwjca")
+
+[sub_resource type="TextMesh" id="TextMesh_5mnl8"]
+font = ExtResource("2_b8mnu")
+horizontal_alignment = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwty5"]
+render_priority = 0
+shader = ExtResource("3_v7yjy")
+shader_parameter/Animation_Factor = -0.0625
+
+[sub_resource type="TextMesh" id="TextMesh_0nou5"]
+text = "Pants"
+font = ExtResource("4_n1flp")
+font_size = 20
+depth = 0.01
+
+[sub_resource type="TextMesh" id="TextMesh_v3etf"]
+text = "-OFF"
+font = ExtResource("5_hw04v")
+font_size = 43
+depth = 0.003
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_34ygv"]
+render_priority = 0
+shader = ExtResource("6_xwltt")
+shader_parameter/Freeze_Color_Index = 0
+shader_parameter/Animation_Factor = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jr41b"]
+render_priority = 0
+shader = ExtResource("8_s5o1o")
+shader_parameter/Animation_Factor = 0.0
+
+[sub_resource type="Animation" id="Animation_d8vsy"]
+resource_name = "Title Animation!"
+length = 10.0
+step = 0.0166667
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:CRYO_animation_factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:PANTS_animation_factor")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.5, 0, 0.25, 0),
+"times": PackedFloat32Array(0.666667, 1.31667)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:OFF_animation_factor")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.983333, 1.6)
+}
+
+[sub_resource type="Animation" id="Animation_wanc6"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:CRYO_animation_factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:PANTS_animation_factor")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:OFF_animation_factor")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhjef"]
+_data = {
+"RESET": SubResource("Animation_wanc6"),
+"Title Animation!": SubResource("Animation_d8vsy")
+}
+
+[node name="Menu Background World" type="Node3D"]
+script = ExtResource("1_ha0st")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b6nta")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.345233, 2.55088)
+fov = 23.4839
+
+[node name="CRYO text" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.450625, 0, 0)
+material_overlay = SubResource("ShaderMaterial_7iqkg")
+mesh = SubResource("TextMesh_5mnl8")
+surface_material_override/0 = SubResource("ShaderMaterial_mwty5")
+
+[node name="Pants text" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.89613, 0, 0, 0, 1.89613, 0, 0, 0, 1.89613, 0, -0.230983, 0)
+visible = false
+mesh = SubResource("TextMesh_0nou5")
+
+[node name="OFF text" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.579555, 0.155291, 0, -0.155291, 0.579555, 0, 0, 0, 0.6, 0.229766, -0.49024, 0)
+mesh = SubResource("TextMesh_v3etf")
+surface_material_override/0 = SubResource("ShaderMaterial_34ygv")
+
+[node name="pants" parent="." instance=ExtResource("7_pbgtj")]
+transform = Transform3D(0.39775, 0, 0, 0, -1.73862e-08, -0.39775, 0, 0.39775, -1.73862e-08, -0.324095, -0.343179, 5.96046e-08)
+
+[node name="Pants with UV" parent="pants" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_jr41b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 0.4
+libraries = {
+"": SubResource("AnimationLibrary_yhjef")
+}
+
+[editable path="pants"]

@@ -1,0 +1,358 @@
+[gd_scene load_steps=20 format=3 uid="uid://32h6q3jv4jh0"]
+
+[ext_resource type="Script" path="res://scenes/UI/controls_settings_menu.gd" id="1_4m2xf"]
+[ext_resource type="Texture2D" uid="uid://etbel3n4l715" path="res://assets/UI/PS4/PS4_Left_Stick.png" id="1_fp7hu"]
+[ext_resource type="Theme" uid="uid://ctucxvrpdjah4" path="res://scenes/UI/controlmenutextthemeig.tres" id="1_t714c"]
+[ext_resource type="Texture2D" uid="uid://cjruiyljn8h7" path="res://assets/UI/Keyboard_and_Mouse/Dark/W_Key_Dark.png" id="2_o7465"]
+[ext_resource type="Texture2D" uid="uid://84kn517gmraq" path="res://assets/UI/Keyboard_and_Mouse/Dark/A_Key_Dark.png" id="3_mlvqt"]
+[ext_resource type="Texture2D" uid="uid://btvdlognll0hc" path="res://assets/UI/Keyboard_and_Mouse/Dark/S_Key_Dark.png" id="4_xldh3"]
+[ext_resource type="Texture2D" uid="uid://m256pxafacwu" path="res://assets/UI/Keyboard_and_Mouse/Dark/D_Key_Dark.png" id="5_3yedc"]
+[ext_resource type="Texture2D" uid="uid://by684f6u5n83r" path="res://assets/UI/PS4/PS4_Right_Stick.png" id="6_j3qu4"]
+[ext_resource type="Texture2D" uid="uid://dicabktdylkom" path="res://assets/UI/Keyboard_and_Mouse/Dark/Mouse_Simple_Key_Dark.png" id="7_4v80w"]
+[ext_resource type="Texture2D" uid="uid://yf5tgrqjr302" path="res://assets/UI/PS4/PS4_Triangle.png" id="8_agne1"]
+[ext_resource type="Texture2D" uid="uid://dpaadg76rnuty" path="res://assets/UI/Keyboard_and_Mouse/Dark/F_Key_Dark.png" id="9_jsqf6"]
+[ext_resource type="Texture2D" uid="uid://reo3otwf4s7p" path="res://assets/UI/PS4/PS4_Circle.png" id="10_x27ia"]
+[ext_resource type="Texture2D" uid="uid://cematfu1ii1qy" path="res://assets/UI/Keyboard_and_Mouse/Dark/Mouse_Left_Key_Dark.png" id="11_ch5us"]
+[ext_resource type="Texture2D" uid="uid://dht87vaph68qt" path="res://assets/UI/PS4/PS4_R1.png" id="13_f0u7s"]
+[ext_resource type="Texture2D" uid="uid://rcpb2x0netty" path="res://assets/UI/Keyboard_and_Mouse/Dark/E_Key_Dark.png" id="14_0ojlx"]
+[ext_resource type="Texture2D" uid="uid://dc2486j4r2v63" path="res://assets/UI/PS4/PS4_L1.png" id="15_d1kph"]
+[ext_resource type="Texture2D" uid="uid://dloq802wmt4et" path="res://assets/UI/Keyboard_and_Mouse/Dark/Q_Key_Dark.png" id="16_ktfpx"]
+[ext_resource type="Texture2D" uid="uid://dl41lts0g8yu8" path="res://assets/UI/PS4/PS4_Options.png" id="17_bqb86"]
+[ext_resource type="Texture2D" uid="uid://dqrg6iuhr8fug" path="res://assets/UI/Keyboard_and_Mouse/Dark/Esc_Key_Dark.png" id="18_alcxh"]
+
+[node name="Controls Settings Menu" type="Control" node_paths=PackedStringArray("mouse_sensitivity_slider", "controller_sensitivity_slider", "invert_x_button", "invert_y_button", "default_focus")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4m2xf")
+mouse_sensitivity_slider = NodePath("VBoxContainer/VBoxContainer2/Mouse Sensitivity Slider")
+controller_sensitivity_slider = NodePath("VBoxContainer/VBoxContainer2/Controller Sensitivity Slider")
+invert_x_button = NodePath("VBoxContainer/VBoxContainer2/Invert X Button")
+invert_y_button = NodePath("VBoxContainer/VBoxContainer2/Invert Y Button")
+default_focus = NodePath("VBoxContainer/VBoxContainer2/Mouse Sensitivity Slider")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -398.0
+offset_right = 398.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "C.R.Y.O. Pants-OFF was developed with a PS4 controller (and keyboard obvi)
+Inputs are the same button positions on other controllers"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "Move:"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+texture = ExtResource("1_fp7hu")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "or"
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_o7465")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_mlvqt")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_xldh3")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect5" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_3yedc")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "Camera:"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("6_j3qu4")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "or"
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("7_4v80w")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "Freeze:"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("8_agne1")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "or"
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("9_jsqf6")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "Attack:"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+texture = ExtResource("10_x27ia")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "or"
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+texture = ExtResource("11_ch5us")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "Heavy Attack: ^Hold Attack"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer5"]
+visible = false
+layout_mode = 2
+texture = ExtResource("10_x27ia")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer5"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "or"
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer5"]
+visible = false
+layout_mode = 2
+texture = ExtResource("11_ch5us")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "Next Color:"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+texture = ExtResource("13_f0u7s")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "or"
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+texture = ExtResource("14_0ojlx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "Previous Color:"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+texture = ExtResource("15_d1kph")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "or"
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+texture = ExtResource("16_ktfpx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "Pause:"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+texture = ExtResource("17_bqb86")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+theme = ExtResource("1_t714c")
+text = "or"
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+texture = ExtResource("18_alcxh")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+alignment = 1
+
+[node name="Mouse Sensitivity" type="Label" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Mouse Sensitivity"
+
+[node name="Mouse Sensitivity Slider" type="HSlider" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1000.0
+step = 10.0
+
+[node name="Controller Sensitivity" type="Label" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Controller Sensitivity"
+
+[node name="Controller Sensitivity Slider" type="HSlider" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1000.0
+step = 10.0
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/VBoxContainer2"]
+visible = false
+layout_mode = 2
+text = "Invert X"
+
+[node name="CheckBox2" type="CheckBox" parent="VBoxContainer/VBoxContainer2"]
+visible = false
+layout_mode = 2
+text = "Invert Y"
+
+[node name="Invert X Button" type="CheckButton" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Invert X"
+
+[node name="Invert Y Button" type="CheckButton" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Invert Y"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Also, these controlls are unrebindable cuz i got like 11 hours left to finish the whole rest of the game lol"
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="value_changed" from="VBoxContainer/VBoxContainer2/Mouse Sensitivity Slider" to="." method="_on_mouse_sensitivity_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/VBoxContainer2/Controller Sensitivity Slider" to="." method="_on_controller_sensitivity_slider_value_changed"]
+[connection signal="toggled" from="VBoxContainer/VBoxContainer2/Invert X Button" to="." method="_on_invert_x_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/VBoxContainer2/Invert Y Button" to="." method="_on_invert_y_button_toggled"]

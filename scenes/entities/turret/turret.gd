@@ -87,9 +87,18 @@ func _process(delta):
 	var track_thing : float = 10.0
 	
 	if current_target and target_detected:
-		track_thing = 30.0
+		if current_target is CryoPants:
+			lazer_fire_l.look_at(current_target.hit_target.global_position,Vector3.UP,true)
+			lazer_fire_r.look_at(current_target.hit_target.global_position,Vector3.UP,true)
+		else:
+			lazer_fire_l.look_at(current_target.global_position,Vector3.UP,true)
+			lazer_fire_r.look_at(current_target.global_position,Vector3.UP,true)
+		if lazer_fire_l.targetting_player and lazer_fire_r.targetting_player:
+			whirl_up = lerp(whirl_up, 1.0, freeze_delta*whirl_up_speed) # but up here i don't have to convert a float back to a float??? like mmm yes this float here is a float????
+		else:
+			whirl_up = lerp(float(whirl_up), 0.0, freeze_delta*whirl_down_speed)
 		update_tracking(freeze_delta*10.0)
-		whirl_up = lerp(whirl_up, 1.0, freeze_delta*whirl_up_speed) # but up here i don't have to convert a float back to a float??? like mmm yes this float here is a float????
+		track_thing = 30.0
 	else: # it's like how godot just sometimes *forgets* what type something is after it's used once somehwere else earlier in the stack.   what the heck??
 		track_thing = search_angle
 		update_tracking(freeze_delta*2.0)#		Okay, weird that i have to convert freeze_dealta, too # Wait static float define worked this time

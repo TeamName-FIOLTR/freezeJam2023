@@ -1,0 +1,111 @@
+[gd_scene load_steps=15 format=3 uid="uid://g1twwryefig0"]
+
+[ext_resource type="Script" path="res://scenes/tests/pants2notcorrupt/pants2.gd" id="1_5boo4"]
+[ext_resource type="PackedScene" uid="uid://bqxwm2g0w4vbb" path="res://assets/models/cryo_pants/pantshopefully.glb" id="1_lgevu"]
+[ext_resource type="AnimationLibrary" uid="uid://cunhjnrmtu07a" path="res://assets/animations/cryo_pants/pantsanimtweatsmaybe.glb" id="2_4myrf"]
+[ext_resource type="Shader" uid="uid://clr0iku4o0r6p" path="res://scenes/tests/pants2notcorrupt/pantsbase.tres" id="2_akknh"]
+[ext_resource type="Shader" uid="uid://bc6mipb178qjo" path="res://scenes/tests/pants2notcorrupt/beltmaterial.tres" id="3_5kima"]
+[ext_resource type="Shader" uid="uid://del5e5owc8dlm" path="res://scenes/tests/pants2notcorrupt/pants2lines.tres" id="4_6iexq"]
+[ext_resource type="PackedScene" uid="uid://rbacj0enmq33" path="res://scenes/objects/player_camera.tscn" id="7_rx2r3"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://1xli6vkqh6kv" path="res://resources/mainPants.tres" id="7_vw8t0"]
+[ext_resource type="PackedScene" uid="uid://onqfg02pxvn5" path="res://scenes/UI/pants_ui.tscn" id="9_ycsw3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3fgm"]
+render_priority = 0
+shader = ExtResource("2_akknh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y42gr"]
+render_priority = 0
+shader = ExtResource("3_5kima")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hq8pe"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_6iexq")
+shader_parameter/Freeze_Color_Index = 4
+shader_parameter/Base_Brightness = 9.28
+shader_parameter/Pulse_Multiplier = 50.0
+shader_parameter/Pulse = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b80hp"]
+size = Vector3(0.63, 1, 0.715)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wbork"]
+radius = 0.183587
+height = 1.10376
+
+[node name="pants2" type="CharacterBody3D" node_paths=PackedStringArray("anim_tree", "heavy_attack_timer", "pants", "hit_target", "pants_ui", "kick_area")]
+script = ExtResource("1_5boo4")
+anim_tree = NodePath("AnimationTree")
+heavy_attack_timer = NodePath("heavy attack")
+pants = NodePath("pantshopefully")
+hit_target = NodePath("Hit Target")
+pants_ui = NodePath("Pants UI")
+kick_area = NodePath("pantshopefully/Kick Area")
+
+[node name="Hit Target" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.930742, 0)
+
+[node name="pantshopefully" parent="." instance=ExtResource("1_lgevu")]
+
+[node name="Skeleton3D" parent="pantshopefully/Pants Rig" index="0"]
+bones/1/position = Vector3(0, 0.973957, 0)
+bones/1/rotation = Quaternion(-2.85952e-09, 0.213695, -1.28985e-08, 0.976901)
+bones/2/rotation = Quaternion(0.977062, 0.0168377, 0.211503, -0.0182389)
+bones/3/rotation = Quaternion(0.603019, 4.52728e-05, -0.000739146, 0.797727)
+bones/4/rotation = Quaternion(-0.410093, -8.19861e-05, 3.26031e-05, 0.912044)
+bones/5/rotation = Quaternion(0.948117, -0.0409581, 0.253686, 0.187188)
+bones/6/rotation = Quaternion(0.0446586, -5.43678e-05, 2.93366e-06, 0.999002)
+bones/7/rotation = Quaternion(-0.665681, 0.000230232, 4.15416e-05, 0.746236)
+bones/8/position = Vector3(0.124644, 0.461789, -0.498632)
+bones/10/position = Vector3(-0.124644, 0.142578, 0.34016)
+
+[node name="basically done pants" parent="pantshopefully/Pants Rig/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_h3fgm")
+surface_material_override/1 = SubResource("ShaderMaterial_y42gr")
+surface_material_override/2 = SubResource("ShaderMaterial_hq8pe")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="pantshopefully"]
+libraries = {
+"pantsanimtweatsmaybe": ExtResource("2_4myrf")
+}
+
+[node name="Kick Area" type="Area3D" parent="pantshopefully"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pantshopefully/Kick Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.556073, 0.55951)
+shape = SubResource("BoxShape3D_b80hp")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = ExtResource("7_vw8t0")
+anim_player = NodePath("../pantshopefully/AnimationPlayer2")
+active = true
+parameters/conditions/get_up = false
+parameters/conditions/kick = false
+"parameters/conditions/s kick" = false
+parameters/run_animation/Blend2/blend_amount = 1.0
+parameters/run_animation/Rest/blend_amount = 1.0
+parameters/run_animation/RunSpeedScale/scale = 1.0
+"parameters/spin up speed/stand_up_speed/scale" = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.577697, 0)
+shape = SubResource("CapsuleShape3D_wbork")
+
+[node name="Player Camera" parent="." instance=ExtResource("7_rx2r3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03444, 0)
+target_distance = 3.0
+target_offset = 0.1
+
+[node name="heavy attack" type="Timer" parent="."]
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Pants UI" parent="." instance=ExtResource("9_ycsw3")]
+
+[editable path="pantshopefully"]

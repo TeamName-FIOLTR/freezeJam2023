@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://onqfg02pxvn5"]
+
+[ext_resource type="Shader" uid="uid://mjhrivm18527" path="res://scenes/UI/pants_ui_material.tres" id="1_sat6q"]
+[ext_resource type="Script" path="res://scenes/UI/pants_ui.gd" id="1_t5gg7"]
+[ext_resource type="Texture2D" uid="uid://dif8s0wrdc8u7" path="res://assets/textures/pantsUI.png" id="2_ybrtp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6v30"]
+shader = ExtResource("1_sat6q")
+shader_parameter/Health_Factor = null
+shader_parameter/Freeze_Color_Index = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_ndtet"]
+font_size = 21
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Pants UI" type="Control" node_paths=PackedStringArray("texture_rect")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t5gg7")
+texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_s6v30")
+layout_mode = 0
+offset_right = 142.0
+offset_bottom = 282.0
+texture = ExtResource("2_ybrtp")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.5
+offset_right = 50.5
+offset_bottom = 52.0
+grow_horizontal = 2
+text = "TIME LEFT:
+0 SECONDS!!!"
+label_settings = SubResource("LabelSettings_ndtet")
+horizontal_alignment = 1

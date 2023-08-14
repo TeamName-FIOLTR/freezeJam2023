@@ -1,0 +1,172 @@
+[gd_resource type="VisualShader" load_steps=14 format=3 uid="uid://gkhhtww5oh8f"]
+
+[ext_resource type="Script" path="res://resources/shaders/custom_nodes/get_freeze_color_node.gd" id="1_ry4xw"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_l6i6v"]
+default_input_values = [0, 0.0, 1, 10.0]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_xnkd8"]
+function = 1
+
+[sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_m4gjs"]
+default_input_values = [1, -1.0, 2, 1.0, 3, 1.0, 4, -1.0]
+
+[sub_resource type="VisualShaderNodeClamp" id="VisualShaderNodeClamp_dvohq"]
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_gvcwh"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, 30.0]
+op_type = 4
+
+[sub_resource type="VisualShaderNodeUIntParameter" id="VisualShaderNodeUIntParameter_0ojom"]
+parameter_name = "Freeze_Color_Index"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_yslep"]
+initialized = true
+script = ExtResource("1_ry4xw")
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_s2ue4"]
+constant = 0.5
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_2m8jp"]
+parameter_name = "Animation_Factor"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_pk3ff"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_45nrm"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_5fe43"]
+default_input_values = [0, 0.0, 1, 6.283]
+operator = 2
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform uint Freeze_Color_Index = 0;
+uniform float Animation_Factor;
+
+
+// GetFreezeColor
+
+	global uniform vec4 Freeze_Color_0;
+	global uniform vec4 Freeze_Color_1;
+	global uniform vec4 Freeze_Color_2;
+	global uniform vec4 Freeze_Color_3;
+	global uniform vec4 Freeze_Color_4;
+	global uniform vec4 Freeze_Color_5;
+	
+
+void fragment() {
+// UIntParameter:3
+	uint n_out3p0 = Freeze_Color_Index;
+
+
+	vec4 n_out4p0;
+// GetFreezeColor:4
+	{
+		
+			switch(n_out3p0){
+				case 0u: n_out4p0 = Freeze_Color_0; break;
+				case 1u: n_out4p0 = Freeze_Color_1; break;
+				case 2u: n_out4p0 = Freeze_Color_2; break;
+				case 3u: n_out4p0 = Freeze_Color_3; break;
+				case 4u: n_out4p0 = Freeze_Color_4; break;
+				case 5u: n_out4p0 = Freeze_Color_5; break;
+			}
+			
+	}
+
+
+// Mix:2
+	vec3 n_in2p0 = vec3(0.00000, 0.00000, 0.00000);
+	float n_in2p2 = 30.00000;
+	vec3 n_out2p0 = mix(n_in2p0, vec3(n_out4p0.xyz), n_in2p2);
+
+
+// FloatParameter:6
+	float n_out6p0 = Animation_Factor;
+
+
+// FloatOp:9
+	float n_in9p1 = 6.28300;
+	float n_out9p0 = n_out6p0 * n_in9p1;
+
+
+// FloatOp:10
+	float n_in10p1 = 10.00000;
+	float n_out10p0 = n_out9p0 * n_in10p1;
+
+
+// FloatFunc:11
+	float n_out11p0 = cos(n_out10p0);
+
+
+	float n_out12p0;
+// Remap:12
+	float n_in12p1 = -1.00000;
+	float n_in12p2 = 1.00000;
+	float n_in12p3 = 1.00000;
+	float n_in12p4 = -1.00000;
+	{
+		float __input_range = n_in12p2 - n_in12p1;
+		float __output_range = n_in12p4 - n_in12p3;
+		n_out12p0 = n_in12p3 + __output_range * ((n_out11p0 - n_in12p1) / __input_range);
+	}
+
+
+// Clamp:13
+	float n_in13p1 = 0.00000;
+	float n_in13p2 = 1.00000;
+	float n_out13p0 = clamp(n_out12p0, n_in13p1, n_in13p2);
+
+
+// Mix:8
+	float n_in8p1 = 1.00000;
+	float n_out8p0 = mix(n_out13p0, n_in8p1, n_out6p0);
+
+
+// FloatConstant:5
+	float n_out5p0 = 0.500000;
+
+
+// FloatOp:7
+	float n_out7p0 = n_out8p0 * n_out5p0;
+
+
+// Output:0
+	ALBEDO = n_out2p0;
+	ALPHA = n_out7p0;
+	EMISSION = n_out2p0;
+
+
+}
+"
+nodes/fragment/0/position = Vector2(520, 160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeMix_gvcwh")
+nodes/fragment/2/position = Vector2(20, 260)
+nodes/fragment/3/node = SubResource("VisualShaderNodeUIntParameter_0ojom")
+nodes/fragment/3/position = Vector2(-560, 380)
+nodes/fragment/4/node = SubResource("VisualShaderNodeCustom_yslep")
+nodes/fragment/4/position = Vector2(-300, 340)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatConstant_s2ue4")
+nodes/fragment/5/position = Vector2(120, 100)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_2m8jp")
+nodes/fragment/6/position = Vector2(-1300, 100)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatOp_pk3ff")
+nodes/fragment/7/position = Vector2(260, 160)
+nodes/fragment/8/node = SubResource("VisualShaderNodeMix_45nrm")
+nodes/fragment/8/position = Vector2(-100, 0)
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatOp_5fe43")
+nodes/fragment/9/position = Vector2(-860, 180)
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatOp_l6i6v")
+nodes/fragment/10/position = Vector2(-700, 200)
+nodes/fragment/11/node = SubResource("VisualShaderNodeFloatFunc_xnkd8")
+nodes/fragment/11/position = Vector2(-520, 200)
+nodes/fragment/12/node = SubResource("VisualShaderNodeRemap_m4gjs")
+nodes/fragment/12/position = Vector2(-300, 120)
+nodes/fragment/13/node = SubResource("VisualShaderNodeClamp_dvohq")
+nodes/fragment/13/position = Vector2(-96.6949, 172.361)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 4, 0, 2, 1, 2, 0, 0, 5, 2, 0, 0, 0, 5, 0, 7, 1, 7, 0, 0, 1, 6, 0, 8, 2, 6, 0, 9, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 7, 0, 11, 0, 12, 0, 12, 0, 13, 0, 13, 0, 8, 0)

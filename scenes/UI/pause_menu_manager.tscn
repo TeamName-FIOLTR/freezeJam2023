@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://kf6xjcxh00nf"]
+
+[ext_resource type="Script" path="res://scenes/UI/pause_menu_manager.gd" id="1_27kb2"]
+[ext_resource type="PackedScene" uid="uid://b76fdnoqh1hmb" path="res://scenes/UI/pause_menu.tscn" id="2_86igh"]
+
+[node name="Pause Menu Manager" type="Control" groups=["Menu Managers"]]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_27kb2")
+
+[node name="Current" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pause Menu" parent="Current" instance=ExtResource("2_86igh")]
+layout_mode = 1

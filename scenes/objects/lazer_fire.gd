@@ -16,6 +16,9 @@ class_name LazerFire
 
 @export_range(0,1,0.01,"or_greater") var lazer_thiccness : float = 0.1
 
+@export var damage : float = 10
+
+var targetting_player : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_raycast()
@@ -24,7 +27,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	pass
+
+func _physics_process(delta):
+	targetting_player = ($RayCast3D.get_collider() is CryoPants)
 
 func fire():
 	
@@ -34,6 +41,13 @@ func fire():
 	$GPUParticles3D.emit_particle(Transform3D($RayCast3D.global_transform.basis,(global_position+rc_pos)/2.0).rotated_local(Vector3.LEFT,PI/2).scaled_local(Vector3(lazer_thiccness,distance/2,lazer_thiccness)),Vector3.ZERO,Color.WHITE,Color(freeze_color_index,0,0,0),GPUParticles3D.EMIT_FLAG_POSITION | GPUParticles3D.EMIT_FLAG_ROTATION_SCALE | GPUParticles3D.EMIT_FLAG_CUSTOM)
 	$"Text Mesh".mesh.text = "%3.4f\n"%rc_pos.x+"%3.4f\n"%rc_pos.y+"%3.4f\n"%rc_pos.z
 	$AudioStreamPlayer3D.play()
+	
+	if $RayCast3D.is_colliding():
+		var thing = $RayCast3D.get_collider()
+		if thing is CryoPants:
+			print("CRYO PANTS HIT")
+			thing.health -= damage
+			pass
 	pass
 
 func update_raycast():

@@ -1,15 +1,30 @@
 extends Control
 
 @export var default_focus : Control
+
+@export var MasterSlider : HSlider
+@export var TurretFireSlider : HSlider
+@export var TurretWhirlSlider : HSlider
+@export var FreezeEffectSlider : HSlider
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	sync_ui()
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+func sync_ui():
+	
+	MasterSlider.set_value_no_signal(Globals.Settings.Audio.MasterVolume*100.0)
+	TurretFireSlider.set_value_no_signal(Globals.Settings.Audio.TurretFireVolume*100.0)
+	TurretWhirlSlider.set_value_no_signal(Globals.Settings.Audio.TurretWhirlVolume*100.0)
+	FreezeEffectSlider.set_value_no_signal(Globals.Settings.Audio.FreezeEffectVolume*100.0)
+	
+	
+	
+	pass
 
 func _on_visibility_changed():
 	if visible:

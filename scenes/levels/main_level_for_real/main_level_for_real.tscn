@@ -1,0 +1,282 @@
+[gd_scene load_steps=7 format=3 uid="uid://baum672uer6a2"]
+
+[ext_resource type="PackedScene" uid="uid://g1twwryefig0" path="res://scenes/tests/pants2notcorrupt/pants2.tscn" id="1_i1f4d"]
+[ext_resource type="PackedScene" uid="uid://cvi30bbr5yioe" path="res://scenes/entities/turret/turret.tscn" id="2_uwsx4"]
+[ext_resource type="PackedScene" uid="uid://dgn6y26igoq6w" path="res://scenes/UI/winnerz_zone.tscn" id="3_v83uk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4cejb"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_scnsk"]
+sky_material = SubResource("ProceduralSkyMaterial_4cejb")
+
+[sub_resource type="Environment" id="Environment_a75l2"]
+background_mode = 2
+sky = SubResource("Sky_scnsk")
+tonemap_mode = 2
+tonemap_exposure = 0.59
+
+[node name="Main Level For Real" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a75l2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+collision_layer = 7
+size = Vector3(100, 10, 100)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.328, 0)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(10, 10, 10)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.32782, 8)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 5.32782, 11)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, 5.32782, 7)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 11.3437, 5.32782, 0.703618)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1.78814e-07, 0, -1, 0, 1, 0, 1, 0, 1.78814e-07, 16.3346, 5.32782, -3.16039)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 21.3346, 5.32782, -6.16039)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 16.3346, 5.32782, -8.16039)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 9.3346, 5.32782, -11.1604)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 21.3346, 5.32782, -12.1604)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 22.1718, 5.32782, -19.7265)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 22.4927, 5.32782, -24.7341)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1.78814e-07, 0, -1, 0, 1, 0, 1, 0, 1.78814e-07, 16.4927, 5.32782, -29.7341)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, -1, 5.3346, 5.32782, -17.1604)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, -1, 2.3346, 5.32782, -17.1604)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(2.68221e-07, 0, -1, 0, 1, 0, 1, 0, 2.68221e-07, -2.6654, 5.32782, -21.1604)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(2.68221e-07, 0, -1, 0, 1, 0, 1, 0, 2.68221e-07, 7.3346, 5.32782, -30.1604)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-1, 0, -2.24509e-07, 0, 1, 0, 2.24509e-07, 0, -1, -5.6654, 5.32782, -27.1604)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(2.68221e-07, 0, -1, 0, 1, 0, 1, 0, 2.68221e-07, -2.6654, 5.32782, -29.1604)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(2.68221e-07, 0, -1, 0, 1, 0, 1, 0, 2.68221e-07, -11.2527, 5.32782, -30.7993)
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(2.68221e-07, 0, -1, 0, 1, 0, 1, 0, 2.68221e-07, -11.2527, 5.32782, -33.5332)
+visible = false
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(2.68221e-07, 0, -1, 0, 1, 0, 1, 0, 2.68221e-07, -16.1412, 5.32782, -30.7993)
+visible = false
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(2.68221e-07, 0, -1, 0, 1, 0, 1, 0, 2.68221e-07, -16.1412, 5.32782, -33.5332)
+visible = false
+operation = 2
+use_collision = true
+collision_layer = 7
+size = Vector3(3, 10, 10)
+
+[node name="pants2" parent="." instance=ExtResource("1_i1f4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12281, 0.960698, -0.947007)
+
+[node name="Turrets" type="Node3D" parent="."]
+
+[node name="Turret" parent="Turrets" instance=ExtResource("2_uwsx4")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.38896, 0, 12.5831)
+
+[node name="Turret2" parent="Turrets" instance=ExtResource("2_uwsx4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.5919, 0.327824, 11.3332)
+
+[node name="Turret3" parent="Turrets" instance=ExtResource("2_uwsx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.37608, 0.327822, 3.06364)
+freeze_color_index = 1
+
+[node name="Turret4" parent="Turrets" instance=ExtResource("2_uwsx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.332, 0.327822, -3.48004)
+frozen = true
+freeze_factor = 1.0
+
+[node name="Turret5" parent="Turrets" instance=ExtResource("2_uwsx4")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 20.4536, 0.327824, -6.48343)
+
+[node name="Turret6" parent="Turrets" instance=ExtResource("2_uwsx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1396, 0.327826, -15.7438)
+freeze_color_index = 2
+
+[node name="Turret7" parent="Turrets" instance=ExtResource("2_uwsx4")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 13.0916, 0.327824, -10.2214)
+freeze_color_index = 5
+
+[node name="Turret" parent="." instance=ExtResource("2_uwsx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30351, 0.327824, -20.3707)
+freeze_color_index = 3
+
+[node name="Turret2" parent="." instance=ExtResource("2_uwsx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11324, 0.327824, -20.624)
+freeze_color_index = 4
+
+[node name="Turret3" parent="." instance=ExtResource("2_uwsx4")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 1.63964, 0.327824, -21.7129)
+freeze_color_index = 4
+frozen = true
+freeze_factor = 1.0
+
+[node name="Turret4" parent="." instance=ExtResource("2_uwsx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8334, 0.327824, -23.2472)
+freeze_color_index = 2
+frozen = true
+freeze_factor = 1.0
+
+[node name="Turret5" parent="." instance=ExtResource("2_uwsx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6698, 0.327822, -28.8397)
+freeze_color_index = 2
+
+[node name="Turret6" parent="." instance=ExtResource("2_uwsx4")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 20.7556, 0.327822, -30.5846)
+
+[node name="Turret7" parent="." instance=ExtResource("2_uwsx4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.2673, 0.327826, -29.393)
+freeze_color_index = 3
+
+[node name="Turret8" parent="." instance=ExtResource("2_uwsx4")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -5.9225, 0.327824, -21.5788)
+
+[node name="Turret9" parent="." instance=ExtResource("2_uwsx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.20895, 0.32782, -27.4299)
+frozen = true
+freeze_factor = 1.0
+
+[node name="Turret10" parent="." instance=ExtResource("2_uwsx4")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 10.5256, 0.327824, -29.7539)
+frozen = true
+freeze_factor = 1.0
+
+[node name="Turret11" parent="." instance=ExtResource("2_uwsx4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.03924, 0.327824, -30.2745)
+freeze_color_index = 1
+
+[node name="Turret12" parent="." instance=ExtResource("2_uwsx4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.06658, 0.327824, -29.131)
+freeze_color_index = 4
+
+[node name="WINNERZ ZONE" parent="." instance=ExtResource("3_v83uk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3884, 0.327822, -30.6689)

@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl88rkn2eiobd"]
+
+[ext_resource type="Script" path="res://scenes/UI/death_menu.gd" id="1_mqw7u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tthx1"]
+font_size = 71
+
+[node name="Death Menu" type="Control" node_paths=PackedStringArray("default_focus")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mqw7u")
+default_focus = NodePath("VBoxContainer/VBoxContainer/Retry Button")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "C.R.Y.O. PANTS-OOF"
+label_settings = SubResource("LabelSettings_tthx1")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Retry Button" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "RETRY"
+
+[node name="Menu Button" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAIN MENU"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Retry Button" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Menu Button" to="." method="_on_menu_button_pressed"]

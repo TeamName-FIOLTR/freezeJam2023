@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/UI/audio_settings.gd" id="1_xh7n7"]
 
-[node name="Audio Settings" type="Control" node_paths=PackedStringArray("default_focus")]
+[node name="Audio Settings" type="Control" node_paths=PackedStringArray("default_focus", "MasterSlider", "TurretFireSlider", "TurretWhirlSlider", "FreezeEffectSlider")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xh7n7")
 default_focus = NodePath("AspectRatioContainer/VBoxContainer/MasterSlider")
+MasterSlider = NodePath("AspectRatioContainer/VBoxContainer/MasterSlider")
+TurretFireSlider = NodePath("AspectRatioContainer/VBoxContainer/FireSlider")
+TurretWhirlSlider = NodePath("AspectRatioContainer/VBoxContainer/WhirlSlider")
+FreezeEffectSlider = NodePath("AspectRatioContainer/VBoxContainer/FXSlider")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 layout_mode = 1

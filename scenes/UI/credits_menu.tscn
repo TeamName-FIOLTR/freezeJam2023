@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqf7j61u3k0o4"]
+
+[ext_resource type="Script" path="res://scenes/UI/credits_menu.gd" id="1_qko1n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvvju"]
+bg_color = Color(0, 0, 0, 0.95)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p8cf6"]
+font_size = 46
+
+[node name="Credits Menu" type="Control" node_paths=PackedStringArray("default_focus")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qko1n")
+default_focus = NodePath("VBoxContainer/HBoxContainer/Button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_right = 0.95
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "BACK"
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nvvju")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "C.R.Y.O. Pants-OFF"
+label_settings = SubResource("LabelSettings_p8cf6")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "by Teamname-FIOLTR"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Programming: Mequam & X3K
+3D Modeling: X3K
+Rigging: X3K
+3D Animation: Mequam & X3K
+Game Design: Mequam & X3K"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

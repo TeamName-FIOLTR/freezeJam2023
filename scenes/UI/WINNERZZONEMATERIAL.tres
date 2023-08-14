@@ -1,0 +1,41 @@
+[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://3kq12gu6np2c"]
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_t1txb"]
+constant = Color(0, 1, 0.561223, 1)
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_pmf7v"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, 99.0]
+op_type = 4
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+
+void fragment() {
+// ColorConstant:2
+	vec4 n_out2p0 = vec4(0.000000, 1.000000, 0.561223, 1.000000);
+
+
+// Mix:3
+	vec3 n_in3p0 = vec3(0.00000, 0.00000, 0.00000);
+	float n_in3p2 = 99.00000;
+	vec3 n_out3p0 = mix(n_in3p0, vec3(n_out2p0.xyz), n_in3p2);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	EMISSION = n_out3p0;
+
+
+}
+"
+graph_offset = Vector2(-496.402, 123.252)
+nodes/fragment/0/position = Vector2(620, 100)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorConstant_t1txb")
+nodes/fragment/2/position = Vector2(-160, 240)
+nodes/fragment/3/node = SubResource("VisualShaderNodeMix_pmf7v")
+nodes/fragment/3/position = Vector2(224.6, 234.218)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 1, 3, 0, 0, 5, 2, 0, 0, 0)

@@ -7,14 +7,14 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_scnsk"]
+[sub_resource type="Sky" id="Sky_tq1m0"]
 sky_material = SubResource("ProceduralSkyMaterial_fnnea")
 
 [sub_resource type="Environment" id="Environment_vjq8r"]
 background_mode = 2
-sky = SubResource("Sky_scnsk")
+sky = SubResource("Sky_tq1m0")
 tonemap_mode = 2
-glow_enabled = true
+tonemap_exposure = 0.59
 
 [node name="Main Level" type="Node3D"]
 
@@ -28,24 +28,74 @@ shadow_enabled = true
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 use_collision = true
-size = Vector3(20, 2, 20)
+collision_layer = 3
+size = Vector3(75, 11.485, 75)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(20, 20, 20)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 9.53406)
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(10, 20, 20)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.20475, 11, 21.6131)
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(10, 20, 20)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 18.3629, 11, 13.8102)
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(10, 20, 20)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 24.4889, 11, -5.44105)
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(10, 20, 20)
 
 [node name="pants2" parent="." instance=ExtResource("1_ryrv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.26751, 0, -4.66846)
 
-[node name="Turret" parent="." instance=ExtResource("2_ntg40")]
+[node name="Turrets" type="Node3D" parent="."]
+
+[node name="Turret" parent="Turrets" instance=ExtResource("2_ntg40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
 freeze_color_index = 1
 
-[node name="Turret2" parent="." instance=ExtResource("2_ntg40")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, -6)
+[node name="Turret2" parent="Turrets" instance=ExtResource("2_ntg40")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.91816, 0, 8.75385)
 
-[node name="Turret3" parent="." instance=ExtResource("2_ntg40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3)
+[node name="Turret3" parent="Turrets" instance=ExtResource("2_ntg40")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -6.1351, 0, 3.22606)
 freeze_color_index = 2
 
-[node name="Turret4" parent="." instance=ExtResource("2_ntg40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -3)
+[node name="Turret4" parent="Turrets" instance=ExtResource("2_ntg40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7701, 0, 15.9655)
 freeze_color_index = 2
 frozen = true
 freeze_factor = 1.0
+
+[node name="Turret5" parent="Turrets" instance=ExtResource("2_ntg40")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 16.2303, -4.76837e-07, 16.5188)
+freeze_color_index = 4
+
+[node name="Turret6" parent="Turrets" instance=ExtResource("2_ntg40")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 23.5448, 0, -3.37485)
+freeze_color_index = 3
+
+[node name="Turret7" parent="Turrets" instance=ExtResource("2_ntg40")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 18.8968, 4.76837e-07, 0.859458)
+freeze_color_index = 5

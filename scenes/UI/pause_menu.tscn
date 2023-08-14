@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://b76fdnoqh1hmb"]
+
+[ext_resource type="Script" path="res://scenes/UI/pause_menu.gd" id="1_plc0t"]
+[ext_resource type="Theme" uid="uid://cvophan5igug5" path="res://scenes/UI/pause_button_theme.tres" id="2_6xesl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tc0wn"]
+font_size = 71
+outline_size = 13
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.905882)
+shadow_offset = Vector2(8.525, 7.715)
+
+[node name="Pause Menu" type="Control" node_paths=PackedStringArray("default_focus")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_plc0t")
+default_focus = NodePath("VBoxContainer/VBoxContainer/Resume Button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_tc0wn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.45
+alignment = 1
+
+[node name="Resume Button" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_6xesl")
+text = "Resume"
+
+[node name="Settings Button" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_6xesl")
+text = "Settings"
+
+[node name="Credits Button" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_6xesl")
+text = "Credits"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Resume Button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Settings Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Credits Button" to="." method="_on_credits_button_pressed"]
